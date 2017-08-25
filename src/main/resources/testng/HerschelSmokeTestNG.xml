@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="HerschelTestSuite" verbose="1">
+
+  <test name="Herschel Smoke Test" preserve-order="true">
+    <parameter name="country" value="UK"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <classes>
+      <class name="tests.HerschelSmokeTest">
+        <methods>
+          <include name="setCookie" />
+          <!--include name="loadAccountPage" /-->
+          <!--include name="signInToAccount" /-->
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <!--include name="placeOrder" /-->
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>
