@@ -2,7 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Suites">
   <suite-files>
-    <suite-file path="testng/AmazonTestNG.xml"/>
-    <suite-file path="testng/ImprovedAmazonTestNG.xml"/>
+    <suite-file path="testng/HerschelSmokeTestNG.xml"/>
   </suite-files>
 </suite>

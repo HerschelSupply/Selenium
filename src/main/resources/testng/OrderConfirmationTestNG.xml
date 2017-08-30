@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="OrderConfirmationTestSuite" verbose="1">
+
+  <test name="Order Confirmation Test" preserve-order="true">
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <parameter name="gmailPassword" value="T3$T1234"/>
+    <parameter name="senderName" value="EP Dev"/>
+    <parameter name="senderEmail" value="dev-bot@elasticpath.com"/>
+    <parameter name="emailTitle" value="Thank You For Your Order"/>
+    <parameter name="emailSubTitle" value=" - Your order number is 33284. Please review the details within. SHOP Herschel Supply Co. BLOG Dear Test Automation, Thank you for your order. Please review the details below. DATE: 29/08/2017 ORDER"/>
+    <classes>
+      <class name="tests.OrderConfirmationTest">
+        <methods>
+          <!--include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <include name="placeOrder" /-->
+          <include name="gmailSignIn" />
+          <include name="verifyEmailSender" />
+          <include name="verifyEmailTitle" />
+          <include name="verifyEmailSubTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>

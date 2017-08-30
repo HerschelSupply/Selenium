@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="DetailedSmokeTestSuite" verbose="1">
+
+  <test name="Detailed Smoke Test" preserve-order="true">
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="T3$T1234"/>
+    <classes>
+      <class name="tests.DetailedSmokeTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadHomePage" />
+          <include name="NavigateToLittleAmericaBackPack" />
+          <include name="selectSKU" />
+          <include name="addToCart" />
+          <include name="verifyToaster" />
+          <include name="clickDrawerCheckoutLink" />
+          <include name="signInAtCheckout" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <!--include name="placeOrder" /-->
+          <!--include name="verifyOrderConfirmationTitle" /-->
+          <!--include name="verifyOrderConfirmationMessage" /-->
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>

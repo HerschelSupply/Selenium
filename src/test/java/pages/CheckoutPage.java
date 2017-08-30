@@ -28,6 +28,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement SignOutButton;
 	@FindBy(css = "button[id='hsco-section2-next']")
 	private WebElement ShippingAddressNext;
+	//@FindBy(css = "button[id='hsco-section3-next']")
 	@FindBy(css = "button[id='hsco-section3-next']")
 	private WebElement ShippingMethodNext;
 	@FindBy(css = "button[id='hsco-section4-next']")
@@ -105,16 +106,17 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		//Need to wait for the loading overlay to disappear
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		for (WebElement option : ShippingMethods.findElements(By.tagName("option"))) {
-			if (option.getText().equals("Standard Shipping - FREE")) {
+			if (option.getText().equals("Expedited Shipping - $25")) {
 				option.click();
 			}
 		}
+
 		//Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
 		//duplicate wait below, is this necessary?
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
+		//wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		//wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
 		ShippingMethodNext.click();
 		//Need to wait for the loading overlay to disappear and the Payment Methods Next button to be clickable before proceeding
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
@@ -128,7 +130,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		//Need to wait for the loading overlay to disappear
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		for (WebElement option : PaymentMethods.findElements(By.tagName("option"))) {
-			if (option.getText().contains("Visa")) {
+			if (option.getText().contains("MasterCard")) {
 				option.click();
 			}
 		}
@@ -150,7 +152,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
     public void placeOrder() {
     	//Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-        wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
+        wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
 		PlaceOrder.click();
     }
 }

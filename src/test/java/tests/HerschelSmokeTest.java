@@ -1,10 +1,8 @@
 package tests;
 
 import base.TestBase;
-import pages.HomePage;
-import pages.ProductPage;
-import pages.CheckoutPage;
-import pages.AccountPage;
+import org.testng.Assert;
+import pages.*;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -20,6 +18,7 @@ public class HerschelSmokeTest extends TestBase {
     private ProductPage productPage;
     private CheckoutPage checkoutPage;
     private AccountPage accountPage;
+    private ConfirmationPage confirmationPage;
 
     /**
      * Initialises the pages needed for the test.
@@ -30,10 +29,11 @@ public class HerschelSmokeTest extends TestBase {
         productPage = new ProductPage(getDriver());
         checkoutPage = new CheckoutPage(getDriver());
         accountPage = new AccountPage(getDriver());
+        confirmationPage = new ConfirmationPage(getDriver());
     }
 
     /**
-     * Sets the region cookie on the broswer (so the region pop-up doesn't appear).
+     * Sets the region cookie on the browser (so the region pop-up doesn't appear).
      *
      * @param country Herschel country site to load
      */
@@ -138,5 +138,32 @@ public class HerschelSmokeTest extends TestBase {
     @Test
     public void placeOrder() {
         checkoutPage.placeOrder();
+    }
+
+    /**
+     * Verifies the Title of the Order Confirmation Page.
+     *
+     * @param expectedConfirmationTitle Order Confirmation Title
+     */
+    @Test
+    @Parameters("confirmationTitle")
+    public void verifyOrderConfirmationTitle(String expectedConfirmationTitle) {
+        String actualConfirmationTitle = confirmationPage.getConfirmationTitle();
+        Assert.assertEquals(actualConfirmationTitle, expectedConfirmationTitle, String.format(
+                "The actual Order Confirmation Title did not match the expected.  Actual: '%s'. Expected: '%s'", actualConfirmationTitle, expectedConfirmationTitle));
+
+    }
+
+    /**
+     * Verifies the Order Confirmation Message on the Order Confirmation Page.
+     *
+     * @param expectedConfirmationMessage Order Confirmation Message
+     */
+    @Test
+    @Parameters("confirmationMessage")
+    public void verifyOrderConfirmationMessage(String expectedConfirmationMessage) {
+        String actualConfirmationMessage = confirmationPage.getConfirmationMessage();
+        Assert.assertEquals(actualConfirmationMessage, expectedConfirmationMessage, String.format(
+                "The actual Order Confirmation Message did not match the expected.  Actual: '%s'. Expected: '%s'", actualConfirmationMessage, expectedConfirmationMessage));
     }
 }

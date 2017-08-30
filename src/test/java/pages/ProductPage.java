@@ -48,7 +48,8 @@ public class ProductPage extends Page<ProductPage> {
 			driver.get("https://qa.herschelsupplyco.co.uk/shop/backpacks/mammoth-backpack-medium?v=");
 		}
 		else if(country.equals("EU")) {
-			driver.get("https://qa.herschel.eu/shop/backpacks/little-america-backpack?v=");
+			//driver.get("https://qa.herschel.eu/shop/backpacks/little-america-backpack?v=");
+			driver.get("https://qa.herschel.eu/shop/backpacks/mammoth-backpack-medium?v=");
 		}
 		else {
 			driver.get("https://qa.herschel.ca/shop/backpacks/mammoth-backpack-medium?v=");
