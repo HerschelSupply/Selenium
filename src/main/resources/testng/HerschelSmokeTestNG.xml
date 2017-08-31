@@ -15,17 +15,17 @@
           <include name="addToCart" />
           <include name="goToCheckout" />
           <include name="signInAtCheckout" />
-          <include name="selectDefaultShippingAddress" />
+          <!--include name="selectDefaultShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="selectDefaultPaymentMethod" />
           <include name="placeOrder" />
           <include name="verifyOrderConfirmationTitle" />
-          <include name="verifyOrderConfirmationMessage" />
+          <include name="verifyOrderConfirmationMessage" /-->
         </methods>
       </class>
     </classes>
   </test>
-  <test name="Herschel Smoke Test US" preserve-order="true">
+  <!--test name="Herschel Smoke Test US" preserve-order="true">
     <parameter name="country" value="US"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
@@ -96,5 +96,5 @@
         </methods>
       </class>
     </classes>
-  </test>
+  </test-->
 </suite>
