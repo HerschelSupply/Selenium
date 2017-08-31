@@ -14,13 +14,13 @@
           <include name="loadLittleAmericaBackpack" />
           <include name="addToCart" />
           <include name="goToCheckout" />
-          <include name="signInAtCheckout" />
+          <!--include name="signInAtCheckout" />
           <include name="selectDefaultShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="selectDefaultPaymentMethod" />
           <include name="placeOrder" />
           <include name="verifyOrderConfirmationTitle" />
-          <include name="verifyOrderConfirmationMessage" />
+          <include name="verifyOrderConfirmationMessage" /-->
         </methods>
       </class>
     </classes>
