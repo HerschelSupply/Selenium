@@ -164,9 +164,6 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		//Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
-		//duplicate wait below, is this necessary?
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
 		PaymentNext.click();
 		//Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
