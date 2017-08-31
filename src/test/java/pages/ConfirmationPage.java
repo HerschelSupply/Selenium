@@ -40,8 +40,6 @@ public class ConfirmationPage extends Page<ConfirmationPage> {
 	 * @return String Confirmation Page Title
 	 */
 	public String getConfirmationTitle() {
-		//wait for Order Summary Page to load
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='account order-summary container--fluid text-grey4 js-order-confirmation']")));
         return ConfirmationTitle.getText();
 	}
 
@@ -63,6 +61,9 @@ public class ConfirmationPage extends Page<ConfirmationPage> {
      * @return String Order Confirmation Message
      */
     public String getConfirmationMessage() {
+		//wait for Order Summary Page to load
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='account order-summary container--fluid text-grey4 js-order-confirmation']")));
         return ConfirmationMessage.getText();
     }
 }
