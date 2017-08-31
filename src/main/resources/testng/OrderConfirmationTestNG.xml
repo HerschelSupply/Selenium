@@ -12,14 +12,6 @@
     <classes>
       <class name="tests.OrderConfirmationTest">
         <methods>
-          <!--include name="loadLittleAmericaBackpack" />
-          <include name="addToCart" />
-          <include name="goToCheckout" />
-          <include name="signInAtCheckout" />
-          <include name="selectDefaultShippingAddress" />
-          <include name="selectDefaultShippingMethod" />
-          <include name="selectDefaultPaymentMethod" />
-          <include name="placeOrder" /-->
           <include name="gmailSignIn" />
           <include name="verifyEmailSender" />
           <include name="verifyEmailTitle" />

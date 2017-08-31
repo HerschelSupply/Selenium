@@ -1,9 +1,13 @@
 package pages;
 
 import base.Page;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Handles interactions with the Herschel Order Confirmation Page.
@@ -13,6 +17,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ConfirmationPage extends Page<ConfirmationPage> {
 
+	private Wait<WebDriver> wait;
 	@FindBy(css = "h1[class='header--md--mobile']")
 	private WebElement ConfirmationTitle;
 	@FindBy(css = "p[class='h4']")
@@ -26,6 +31,7 @@ public class ConfirmationPage extends Page<ConfirmationPage> {
 	 */
 	public ConfirmationPage(final WebDriver driver) {
 		super(driver);
+		wait = new WebDriverWait(driver, 10);
 	}
 	
 	/**
@@ -34,6 +40,7 @@ public class ConfirmationPage extends Page<ConfirmationPage> {
 	 * @return String Confirmation Page Title
 	 */
 	public String getConfirmationTitle() {
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[class='button button--primary button--submit']")));
         return ConfirmationTitle.getText();
 	}
 
