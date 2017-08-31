@@ -157,7 +157,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		PaymentMethods.click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		for (WebElement option : PaymentMethods.findElements(By.tagName("option"))) {
-			if (option.getText().contains("Visa")) {
+			if (option.getText().equals("Visa ending in *4242")) {
 				option.click();
 			}
 		}

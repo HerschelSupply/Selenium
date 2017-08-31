@@ -22,7 +22,7 @@ public class ConfirmationPage extends Page<ConfirmationPage> {
 	private WebElement ConfirmationTitle;
 	@FindBy(css = "p[class='h4']")
 	private WebElement OrderNumber;
-	@FindBy(css = "p[class='text-copy]")
+	@FindBy(css = "p[class='text-copy1']")
 	private WebElement ConfirmationMessage;
 
 	/**
