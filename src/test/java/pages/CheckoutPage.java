@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CheckoutPage extends Page<CheckoutPage> {
 
     private Wait<WebDriver> wait;
+	//WebElements for Registered Checkout
 	@FindBy(css = "input[name='hsco-checkout-email']")
 	private WebElement EmailField;
 	@FindBy(css = "input[name='hsco-checkout-password']")
@@ -28,7 +29,6 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement SignOutButton;
 	@FindBy(css = "button[id='hsco-section2-next']")
 	private WebElement ShippingAddressNext;
-	//@FindBy(css = "button[id='hsco-section3-next']")
 	@FindBy(css = "button[id='hsco-section3-next']")
 	private WebElement ShippingMethodNext;
 	@FindBy(css = "button[id='hsco-section4-next']")
@@ -39,6 +39,21 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	private WebElement ShippingMethods;
 	@FindBy(css = "select[id='paymentmethods']")
 	private WebElement PaymentMethods;
+
+	//WebElements for Guest Checkout
+	@FindBy(css = "input[id='email_register']")
+	private WebElement GuestEmailField;
+	@FindBy(css = "button[id='hsco-checkout-register-submit']")
+	private WebElement GuestCheckoutButton;
+	@FindBy(css = "input[id='shipto_givenName']")
+	private WebElement ShippingAddressGivenName;
+	@FindBy(css = "input[id='shipto_familyName']")
+	private WebElement ShippingAddressFamilyName;
+	@FindBy(css = "input[id='shipto_streetAddress']")
+	private WebElement ShippingStreetAddress;
+	@FindBy(css = "input[id='shipto_extendedAddress']")
+	private WebElement ShippingStreetAddressCont;
+
 
     /**
 	 * Default constructor.

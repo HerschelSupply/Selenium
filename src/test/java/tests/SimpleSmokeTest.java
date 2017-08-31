@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
  * 
  * @author tmorris
  */
-public class HerschelSmokeTest extends TestBase {
+public class SimpleSmokeTest extends TestBase {
 
     private HomePage homePage;
     private ProductPage productPage;
