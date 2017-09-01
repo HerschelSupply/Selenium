@@ -63,7 +63,8 @@ public class ConfirmationPage extends Page<ConfirmationPage> {
     public String getConfirmationMessage() {
 		//wait for Order Summary Page to load
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='account order-summary container--fluid text-grey4 js-order-confirmation']")));
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='account order-summary container--fluid text-grey4 js-order-confirmation']")));
+		wait.until(ExpectedConditions.visibilityOf(ConfirmationMessage));
         return ConfirmationMessage.getText();
     }
 }
