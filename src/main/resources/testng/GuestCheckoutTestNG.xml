@@ -1,0 +1,113 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="GuestCheckoutTestSuite" verbose="1">
+
+  <test name="Guest Checkout Test CA" preserve-order="true">
+    <parameter name="country" value="CA"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="givenName" value="Test"/>
+    <parameter name="familyName" value="Automation"/>
+    <parameter name="streetAddress" value="301 Front St W"/>
+    <parameter name="extendedAddress" value="top suite"/>
+    <parameter name="city" value="Toronto"/>
+    <parameter name="region" value="Ontario"/>
+    <parameter name="mailingCode" value="M5V 2T6"/>
+    <parameter name="shippingCountry" value="Canada"/>
+    <parameter name="phoneNumber" value="123-456-7890"/>
+    <parameter name="cardName" value="Test Automation"/>
+    <parameter name="cardNumber" value="4242424242424242"/>
+    <parameter name="expMonth" value="12"/>
+    <parameter name="expYear" value="20"/>
+    <parameter name="cvc" value="123"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.GuestCheckoutTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="checkoutAsGuest" />
+          <include name="addShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="addCreditCard" />
+          <include name="placeOrder" />
+          <include name="verifyOrderConfirmationMessage" />
+          <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <!--test name="Smoke Test US" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.SimpleSmokeTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <include name="placeOrder" />
+            <include name="verifyOrderConfirmationMessage" />
+            <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Smoke Test EU" preserve-order="true">
+    <parameter name="country" value="EU"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.SimpleSmokeTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <include name="placeOrder" />
+            <include name="verifyOrderConfirmationMessage" />
+            <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Smoke Test UK" preserve-order="true">
+    <parameter name="country" value="UK"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.SimpleSmokeTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <include name="placeOrder" />
+            <include name="verifyOrderConfirmationMessage" />
+            <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test-->
+</suite>

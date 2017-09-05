@@ -48,13 +48,43 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	@FindBy(css = "button[id='hsco-checkout-register-submit']")
 	private WebElement GuestCheckoutButton;
 	@FindBy(css = "input[id='shipto_givenName']")
-	private WebElement ShippingAddressGivenName;
+	private WebElement ShippingGivenName;
 	@FindBy(css = "input[id='shipto_familyName']")
-	private WebElement ShippingAddressFamilyName;
+	private WebElement ShippingFamilyName;
 	@FindBy(css = "input[id='shipto_streetAddress']")
 	private WebElement ShippingStreetAddress;
 	@FindBy(css = "input[id='shipto_extendedAddress']")
 	private WebElement ShippingStreetAddressCont;
+
+	@FindBy(css = "input[id='shipto_locality']")
+	private WebElement ShippingCity;
+    @FindBy(css = "select[id='shipto_region']")
+    private WebElement ShippingRegion;
+    @FindBy(css = "input[id='shipto_postalCode']")
+    private WebElement ShippingPostalCode;
+    @FindBy(css = "select[id='shipto_country']")
+    private WebElement ShippingCountry;
+    @FindBy(css = "input[id='shipto_phoneNumber']")
+    private WebElement ShippingPhoneNumber;
+    @FindBy(css = "button[id='hsco-add-address']")
+    private WebElement AddAddressButton;
+    @FindBy(css = "input[id='addressNew']")
+    private WebElement EnterNewAddress;
+
+    @FindBy(css = "input[id='hsco-card-name']")
+    private WebElement CardName;
+    @FindBy(css = "input[id='hsco-card-number']")
+    private WebElement CardNumber;
+    @FindBy(css = "input[id='hsco-exp-MM']")
+    private WebElement CardExpMonth;
+    @FindBy(css = "input[id='hsco-exp-YY']")
+    private WebElement CardExpYear;
+    @FindBy(css = "input[id='hsco-card-cvc']")
+    private WebElement CardCVC;
+    @FindBy(css = "button[id='hsco-add-payment']")
+    private WebElement AddPaymentButton;
+    @FindBy(css = "input[id='newCard']")
+    private WebElement EnterNewCard;
 
 
     /**
@@ -138,14 +168,12 @@ public class CheckoutPage extends Page<CheckoutPage> {
 				option.click();
 			}
 		}
-
 		//Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
 		ShippingMethodNext.click();
-		//Need to wait for the loading overlay to disappear and the Payment Methods Next button to be clickable before proceeding
+		//Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
 	}
 
 	/**
@@ -153,7 +181,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public void selectDefaultPaymentMethod() {
 		//Need to wait for the loading overlay to disappear
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
 		PaymentMethods.click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		for (WebElement option : PaymentMethods.findElements(By.tagName("option"))) {
@@ -179,4 +207,89 @@ public class CheckoutPage extends Page<CheckoutPage> {
         wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
 		PlaceOrder.click();
     }
+
+    /**
+     * Continue Checkout as a Guest.
+     *
+     * @param email email address used to checkout as a guest
+     */
+    public void checkoutAsGuest(String email) {
+        wait.until(ExpectedConditions.elementToBeClickable(GuestEmailField));
+        GuestEmailField.sendKeys(email);
+        GuestCheckoutButton.click();
+        //Need to wait for the loading overlay to disappear and the Add Address button to be clickable before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(AddAddressButton));
+    }
+
+    /**
+     * Enter a new Shipping Address.
+     *
+     * @param givenName value to enter in shipping address field
+     * @param familyName value to enter in shipping address field
+     * @param streetAddress value to enter in shipping address field
+     * @param extendedAddress value to enter in shipping address field
+     * @param city value to enter in shipping address field
+     * @param region value to enter in shipping address field
+     * @param mailingCode value to enter in shipping address field
+     * @param shippingCountry value to enter in shipping address field
+     * @param phoneNumber value to enter in shipping address field
+     */
+    public void addShippingAddress(String givenName, String familyName, String streetAddress, String extendedAddress, String city, String region, String mailingCode, String shippingCountry, String phoneNumber) {
+        //check if the 'Enter a new address' radio button is displayed; if it is, click it
+        //if(driver.findElements(By.cssSelector("input[id='addressNew']")).size()>0) {
+        //    EnterNewAddress.click();
+        //}
+        wait.until(ExpectedConditions.elementToBeClickable(AddAddressButton));
+        ShippingGivenName.sendKeys(givenName);
+        ShippingFamilyName.sendKeys(familyName);
+        ShippingStreetAddress.sendKeys(streetAddress);
+        ShippingStreetAddressCont.sendKeys(extendedAddress);
+        ShippingCity.sendKeys(city);
+        if(driver.getCurrentUrl().startsWith("https://qa.herschel.com") || driver.getCurrentUrl().startsWith("https://qa.herschel.ca")) {
+            for (WebElement option : ShippingRegion.findElements(By.tagName("option"))) {
+                if (option.getText().equals(region)) {
+                    option.click();
+                }
+            }
+        }
+        ShippingPostalCode.sendKeys(mailingCode);
+        for (WebElement option : ShippingCountry.findElements(By.tagName("option"))) {
+            if (option.getText().equals(shippingCountry)) {
+                option.click();
+            }
+        }
+        ShippingPhoneNumber.sendKeys(phoneNumber);
+        AddAddressButton.click();
+        //Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
+    }
+
+    /**
+     * Enter a new Credit Card.
+     *
+     * @param cardName value to enter in credit card field
+     * @param cardNumber value to enter in credit card field
+     * @param expMonth value to enter in credit card field
+     * @param expYear value to enter in credit card field
+     * @param cvc value to enter in credit card field
+     */
+    public void addCreditCard(String cardName, String cardNumber, String expMonth, String expYear, String cvc) {
+        //check if the 'Enter a new address' radio button is displayed; if it is, click it
+        //if(driver.findElements(By.cssSelector("input[id='newCard']")).size()>0) {
+        //    EnterNewCard.click();
+        //}
+        wait.until(ExpectedConditions.elementToBeClickable(AddPaymentButton));
+        CardName.sendKeys(cardName);
+        CardNumber.sendKeys(cardNumber);
+        CardExpMonth.sendKeys(expMonth);
+        CardExpYear.sendKeys(expYear);
+        CardCVC.sendKeys(cvc);
+        AddPaymentButton.click();
+        //Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
+    }
+
 }
