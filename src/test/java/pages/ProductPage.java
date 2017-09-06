@@ -45,12 +45,12 @@ public class ProductPage extends Page<ProductPage> {
 			driver.get("https://qa.herschel.com/shop/backpacks/barlow-backpack-medium?v=");
 		}
 		else if(country.equals("UK")) {
-			driver.get("https://qa.herschelsupplyco.co.uk/shop/backpacks/barlow-backpack-large?v=");
+			driver.get("https://qa.herschelsupplyco.co.uk/shop/backpacks/mammoth-backpack-large?v=");
 		}
 		else if(country.equals("EU")) {
 			//driver.get("https://qa.herschel.eu/shop/backpacks/little-america-backpack?v=");
 			//driver.get("https://qa.herschel.eu/shop/backpacks/mammoth-backpack-medium?v=");
-			driver.get("https://qa.herschel.eu/shop/backpacks/barlow-backpack-large?v=");
+			driver.get("https://qa.herschel.eu/shop/backpacks/apex-lawson?v=");
 		}
 		else {
 			driver.get("https://qa.herschel.ca/shop/backpacks/barlow-backpack-medium?v=");
