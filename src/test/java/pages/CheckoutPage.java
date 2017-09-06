@@ -55,7 +55,6 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	private WebElement ShippingStreetAddress;
 	@FindBy(css = "input[id='shipto_extendedAddress']")
 	private WebElement ShippingStreetAddressCont;
-
 	@FindBy(css = "input[id='shipto_locality']")
 	private WebElement ShippingCity;
     @FindBy(css = "select[id='shipto_region']")
@@ -70,7 +69,6 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement AddAddressButton;
     @FindBy(css = "input[id='addressNew']")
     private WebElement EnterNewAddress;
-
     @FindBy(css = "input[id='hsco-card-name']")
     private WebElement CardName;
     @FindBy(css = "input[id='hsco-card-number']")
@@ -85,7 +83,6 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement AddPaymentButton;
     @FindBy(css = "input[id='newCard']")
     private WebElement EnterNewCard;
-
 
     /**
 	 * Default constructor.
@@ -140,6 +137,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	public void selectDefaultShippingAddress() {
 		//Need to wait for the loading overlay to disappear
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(ShippingAddresses));
 		ShippingAddresses.click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		for (WebElement option : ShippingAddresses.findElements(By.tagName("option"))) {
@@ -181,6 +179,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public void selectDefaultPaymentMethod() {
 		//Need to wait for the loading overlay to disappear
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
         wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
 		PaymentMethods.click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
@@ -236,10 +235,6 @@ public class CheckoutPage extends Page<CheckoutPage> {
      * @param phoneNumber value to enter in shipping address field
      */
     public void addShippingAddress(String givenName, String familyName, String streetAddress, String extendedAddress, String city, String region, String mailingCode, String shippingCountry, String phoneNumber) {
-        //check if the 'Enter a new address' radio button is displayed; if it is, click it
-        //if(driver.findElements(By.cssSelector("input[id='addressNew']")).size()>0) {
-        //    EnterNewAddress.click();
-        //}
         wait.until(ExpectedConditions.elementToBeClickable(AddAddressButton));
         ShippingGivenName.sendKeys(givenName);
         ShippingFamilyName.sendKeys(familyName);
@@ -276,10 +271,6 @@ public class CheckoutPage extends Page<CheckoutPage> {
      * @param cvc value to enter in credit card field
      */
     public void addCreditCard(String cardName, String cardNumber, String expMonth, String expYear, String cvc) {
-        //check if the 'Enter a new address' radio button is displayed; if it is, click it
-        //if(driver.findElements(By.cssSelector("input[id='newCard']")).size()>0) {
-        //    EnterNewCard.click();
-        //}
         wait.until(ExpectedConditions.elementToBeClickable(AddPaymentButton));
         CardName.sendKeys(cardName);
         CardNumber.sendKeys(cardNumber);

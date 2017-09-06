@@ -24,15 +24,16 @@ import pages.ProductPage;
 public class DetailedSmokeTest extends TestBase {
 
     private Wait<WebDriver> wait;
-    @FindBy(css = "input[type='email']")
-    private WebElement EmailField;
-    @FindBy(css = "input[type='password']")
-    private WebElement PasswordField;
-    @FindBy(css = "span[class='RveJvd snByac']")
-    private WebElement NextButton;
+    @FindBy(css = "a[data-model='shop']")
+    private WebElement ShopNav;
+    @FindBy(css = "a[href='/shop/mens/backpacks']")
+    private WebElement BackpacksLink;
+    @FindBy(css = "img[alt='Little America Backpack']")
+    private WebElement LittleAmericaBackpack;
 
-/*
+
     private HomePage homePage;
+/*
     private ProductPage productPage;
     private CheckoutPage checkoutPage;
     private AccountPage accountPage;
@@ -40,63 +41,45 @@ public class DetailedSmokeTest extends TestBase {
     /**
      * Initialises the pages needed for the test.
      */
-/*    @BeforeTest
+    @BeforeTest
     public void setUp() {
         homePage = new HomePage(getDriver());
-        productPage = new ProductPage(getDriver());
-        checkoutPage = new CheckoutPage(getDriver());
-        accountPage = new AccountPage(getDriver());
+        //productPage = new ProductPage(getDriver());
+        //checkoutPage = new CheckoutPage(getDriver());
+        //accountPage = new AccountPage(getDriver());
     }
-*/
+
     /**
      * Sets the region cookie on the browser (so the region pop-up doesn't appear).
      *
      * @param country Herschel country site to load
      */
-/*    @Test
+    @Test
     @Parameters("country")
     public void setCookie(String country) {
         homePage.setCookie(country);
     }
-*/
+
 	/**
-     * Loads the Little America Backpack for the specified country site.
+     * Navigates to the Backpacks section.
      *
      */
     @Test
-    @Parameters({"email", "password"})
-    public void gmailSignIn(String email, String password) {
-        getDriver().get("http://gmail.com");
-        getDriver().findElement(By.cssSelector("input[type='email']")).sendKeys(email);
-        getDriver().findElement(By.cssSelector("span[class='RveJvd snByac']")).click();
-
-        wait = new WebDriverWait(getDriver(), 10);
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[type='password']"))); //elementToBeClickable(PasswordField));
-
-        getDriver().findElement(By.cssSelector("input[type='password']")).sendKeys(password);
-        getDriver().findElement(By.cssSelector("span[class='RveJvd snByac']")).click();
-        //EmailField.sendKeys(email);
-        //NextButton.click();
-        //PasswordField.sendKeys(password);
-        //NextButton.click();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[class='T-I J-J5-Ji T-I-KE L3']")));
+    public void navigateToBackpacks() {
+        homePage.load("CA");
+        ShopNav.click();
+        BackpacksLink.click();
     }
 
     /**
-     * Loads the Little America Backpack for the specified country site.
+     * Clicks on the specified product.
      *
+     * @param productName name of product to select
      */
     @Test
-    @Parameters({"title", "orderNumber"})
-    public void gmailEmailVerification() {
-        //(String title, String orderNumber) {
-        String actualTitle = getDriver().findElements(By.cssSelector("span[id=':2j']")).get(0).getText();
-
-        System.out.print(actualTitle);
-        String actualSubTitle = getDriver().findElements(By.cssSelector("span[class='y2']")).get(0).getText();
-        System.out.print(actualSubTitle);
-
+    @Parameters("productName")
+    public void selectProduct(String productName) {
+        LittleAmericaBackpack.click();
     }
 
 }
