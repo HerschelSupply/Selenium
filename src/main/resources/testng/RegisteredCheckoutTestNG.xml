@@ -1,14 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="SimpleSmokeTestSuite" verbose="1">
+<suite name="RegisteredCheckoutTestSuite" verbose="1">
 
-  <test name="Smoke Test CA" preserve-order="true">
+  <test name="Registered Checkout Test CA" preserve-order="true">
     <parameter name="country" value="CA"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
     <parameter name="confirmationTitle" value="THANK YOU!"/>
     <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
     <classes>
-      <class name="tests.SimpleSmokeTest">
+      <class name="tests.RegisteredCheckoutTest">
         <methods>
           <include name="setCookie" />
           <include name="loadLittleAmericaBackpack" />
@@ -25,14 +25,14 @@
       </class>
     </classes>
   </test>
-  <test name="Smoke Test US" preserve-order="true">
+  <test name="Registered Checkout Test US" preserve-order="true">
     <parameter name="country" value="US"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
     <parameter name="confirmationTitle" value="THANK YOU!"/>
     <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
     <classes>
-      <class name="tests.SimpleSmokeTest">
+      <class name="tests.RegisteredCheckoutTest">
         <methods>
           <include name="setCookie" />
           <include name="loadLittleAmericaBackpack" />
@@ -49,14 +49,14 @@
       </class>
     </classes>
   </test>
-  <test name="Smoke Test EU" preserve-order="true">
+  <test name="Registered Checkout Test EU" preserve-order="true">
     <parameter name="country" value="EU"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
     <parameter name="confirmationTitle" value="THANK YOU!"/>
     <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
     <classes>
-      <class name="tests.SimpleSmokeTest">
+      <class name="tests.RegisteredCheckoutTest">
         <methods>
           <include name="setCookie" />
           <include name="loadLittleAmericaBackpack" />
@@ -73,14 +73,14 @@
       </class>
     </classes>
   </test>
-  <test name="Smoke Test UK" preserve-order="true">
+  <test name="Registered Checkout Test UK" preserve-order="true">
     <parameter name="country" value="UK"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
     <parameter name="confirmationTitle" value="THANK YOU!"/>
     <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
     <classes>
-      <class name="tests.SimpleSmokeTest">
+      <class name="tests.RegisteredCheckoutTest">
         <methods>
           <include name="setCookie" />
           <include name="loadLittleAmericaBackpack" />

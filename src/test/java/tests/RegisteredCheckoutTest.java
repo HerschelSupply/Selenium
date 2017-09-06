@@ -8,11 +8,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /**
- * Smoke Test for Herschel sites
+ * Test to checkout as a registered guest on all Herschel sites
  * 
  * @author tmorris
  */
-public class SimpleSmokeTest extends TestBase {
+public class RegisteredCheckoutTest extends TestBase {
 
     private HomePage homePage;
     private ProductPage productPage;

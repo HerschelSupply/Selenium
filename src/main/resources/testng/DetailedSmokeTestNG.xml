@@ -10,7 +10,7 @@
       <class name="tests.DetailedSmokeTest">
         <methods>
           <include name="setCookie" />
-          <include name="navigateToBackPacks" />
+          <include name="navigateToBackpacks" />
           <include name="selectProduct" />
           <!--include name="selectSKU" />
           <include name="addToCart" />

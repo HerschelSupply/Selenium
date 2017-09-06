@@ -67,8 +67,11 @@ public class DetailedSmokeTest extends TestBase {
     @Test
     public void navigateToBackpacks() {
         homePage.load("CA");
-        ShopNav.click();
-        BackpacksLink.click();
+        //getDriver().findElement(By.cssSelector("a[data-model='shop']")).click();
+        getDriver().findElement(By.linkText("Shop")).click();
+        //getDriver().findElement(By.cssSelector("a[href='/shop/mens/backpacks']")).click();
+        //ShopNav.click();
+        //BackpacksLink.click();
     }
 
     /**
