@@ -42,18 +42,18 @@ public class ProductPage extends Page<ProductPage> {
 	 */
 	public void load(String country) {
 		if(country.equals("US")) {
-			driver.get("https://qa.herschel.com/shop/backpacks/barlow-backpack-medium?v=");
+			driver.get("https://qa.herschel.com/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 		else if(country.equals("UK")) {
-			driver.get("https://qa.herschelsupplyco.co.uk/shop/backpacks/mammoth-backpack-large?v=");
+			driver.get("https://qa.herschelsupplyco.co.uk/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 		else if(country.equals("EU")) {
 			//driver.get("https://qa.herschel.eu/shop/backpacks/little-america-backpack?v=");
 			//driver.get("https://qa.herschel.eu/shop/backpacks/mammoth-backpack-medium?v=");
-			driver.get("https://qa.herschel.eu/shop/backpacks/barlow-backpack-medium?v=");
+			driver.get("https://qa.herschel.eu/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 		else {
-			driver.get("https://qa.herschel.ca/shop/backpacks/barlow-backpack-medium?v=");
+			driver.get("https://qa.herschel.ca/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 	}
 
