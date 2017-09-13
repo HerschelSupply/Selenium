@@ -1,10 +1,14 @@
 package pages;
 
 import base.Page;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Handles interactions with the Herschel Home Page.
@@ -14,6 +18,11 @@ import org.openqa.selenium.support.FindBy;
  */
 public class HomePage extends Page<HomePage> {
 
+	private Wait<WebDriver> wait;
+	@FindBy(linkText = "Shop")
+	private WebElement Shop;
+	@FindBy(linkText = "Backpacks")
+	private WebElement Backpacks;
 	@FindBy(css = "div[data-product-title='Little America Backpack']")
 	private WebElement LittleAmericaBackpack;
 
@@ -23,6 +32,7 @@ public class HomePage extends Page<HomePage> {
 	 */
 	public HomePage(final WebDriver driver) {
 		super(driver);
+		wait = new WebDriverWait(driver, 10);
 	}
 	
 	/**
@@ -66,6 +76,30 @@ public class HomePage extends Page<HomePage> {
 			Cookie region = new Cookie("geo-region", "CA");
 			driver.manage().addCookie(region);
 		}
+	}
+
+	/**
+	 * Navigates to the Backpacks section using the navigation dropdown.
+	 */
+	public void navigateToBackpacks() {
+		Shop.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Backpacks));
+		Backpacks.click();
+	}
+
+	/**
+	 * Clicks on the specified product tile.
+	 *
+	 * @param productName name of the product to select
+	 */
+	public void selectProductTile(String productName) {
+		if (productName.equals("Little America Backpack")) {
+			driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")).click();
+		}
+		else {
+			System.out.println("selectProduct method has not been configured for your specified product: " + productName);
+		}
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 	}
 
 	/**

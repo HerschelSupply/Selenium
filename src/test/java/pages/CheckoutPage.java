@@ -84,6 +84,12 @@ public class CheckoutPage extends Page<CheckoutPage> {
     @FindBy(css = "input[id='newCard']")
     private WebElement EnterNewCard;
 
+    //Cart WebElements
+    @FindBy(css = "p[class='m-y-0 text-cta bfx-product-name']")
+    private WebElement CartProductName;
+    @FindBy(css = "p[class='m-y-0 bfx-product-color']")
+    private WebElement CartSkuName;
+
     /**
 	 * Default constructor.
 	 * @param driver the WebDriver
@@ -283,4 +289,23 @@ public class CheckoutPage extends Page<CheckoutPage> {
         wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
     }
 
+	/**
+	 * Gets the first product name displayed in the Cart.
+	 *
+	 * @return String containing the first product name displayed in the Cart
+	 */
+	public String getCartProduct() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		return CartProductName.getText();
+	}
+
+	/**
+	 * Gets the first SKU name displayed in the Cart.
+	 *
+	 * @return String containing the first SKU name displayed in the Cart
+	 */
+	public String getCartSku() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		return CartSkuName.getText();
+	}
 }
