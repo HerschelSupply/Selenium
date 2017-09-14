@@ -114,7 +114,7 @@ public class ProductPage extends Page<ProductPage> {
      * @return String containing the product name displayed in the Toaster
      */
     public String getToasterProduct() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
         List<WebElement> toasterInfo = Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p"));
         return toasterInfo.get(0).getText();
@@ -126,7 +126,7 @@ public class ProductPage extends Page<ProductPage> {
      * @return String containing the SKU name displayed in the Toaster
      */
     public String getToasterSku() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
         List<WebElement> toasterInfo = Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p"));
         return toasterInfo.get(1).getText();
