@@ -118,7 +118,8 @@ public class ProductPage extends Page<ProductPage> {
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
         //List<WebElement> toasterInfo = Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p"));
         //return toasterInfo.get(0).getText();
-        return Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(0).getText();
+        //return Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(0).getText();
+        return driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(0).getText();
     }
 
     /**
@@ -131,7 +132,8 @@ public class ProductPage extends Page<ProductPage> {
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
         //List<WebElement> toasterInfo = Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p"));
         //return toasterInfo.get(1).getText();
-        return Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(1).getText();
+        //return Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(1).getText();
+        return driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(1).getText();
     }
 
 	/**
