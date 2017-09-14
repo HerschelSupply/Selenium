@@ -2,7 +2,6 @@ package pages;
 
 import base.Page;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -116,7 +115,7 @@ public class ProductPage extends Page<ProductPage> {
      */
     public String getToasterProduct() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-        wait.until(ExpectedConditions.visibilityOf(Toaster));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
         List<WebElement> toasterInfo = Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p"));
         return toasterInfo.get(0).getText();
     }
@@ -128,7 +127,7 @@ public class ProductPage extends Page<ProductPage> {
      */
     public String getToasterSku() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-        wait.until(ExpectedConditions.visibilityOf(Toaster));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
         List<WebElement> toasterInfo = Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p"));
         return toasterInfo.get(1).getText();
     }
