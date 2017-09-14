@@ -1,0 +1,74 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="SearchTestSuite" verbose="1">
+
+  <test name="Search Test CA" preserve-order="true">
+    <parameter name="country" value="CA"/>
+    <parameter name="searchTerm" value="Little America"/>
+    <parameter name="productName" value="Little America Backpack"/>
+    <!--parameter name="productName" value="Little America Backpack"/>
+    <parameter name="skuName" value="Canteen Crosshatch"/-->
+    <classes>
+      <class name="tests.SearchTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="openSearch" />
+          <include name="inputSearchTerm" />
+          <include name="performSearch" />
+          <!--include name="verifyProductName" />
+          <include name="verifySkuColor" /-->
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <!--test name="Browse Test US" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <parameter name="productName" value="Little America Backpack"/>
+    <parameter name="skuName" value="Canteen Crosshatch"/>
+    <classes>
+      <class name="tests.BrowseTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="navigateToBackpacks" />
+          <include name="selectProductTile" />
+          <include name="selectSKU" />
+          <include name="verifyProductName" />
+          <include name="verifySkuColor" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Browse Test EU" preserve-order="true">
+    <parameter name="country" value="EU"/>
+    <parameter name="productName" value="Little America Backpack"/>
+    <parameter name="skuName" value="Canteen Crosshatch"/>
+    <classes>
+      <class name="tests.BrowseTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="navigateToBackpacks" />
+          <include name="selectProductTile" />
+          <include name="selectSKU" />
+          <include name="verifyProductName" />
+          <include name="verifySkuColor" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Browse Test UK" preserve-order="true">
+    <parameter name="country" value="UK"/>
+    <parameter name="productName" value="Little America Backpack"/>
+    <parameter name="skuName" value="Canteen Crosshatch"/>
+    <classes>
+      <class name="tests.BrowseTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="navigateToBackpacks" />
+          <include name="selectProductTile" />
+          <include name="selectSKU" />
+          <include name="verifyProductName" />
+          <include name="verifySkuColor" />
+        </methods>
+      </class>
+    </classes>
+  </test-->
+</suite>

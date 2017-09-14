@@ -31,7 +31,7 @@ public class ConfirmationPage extends Page<ConfirmationPage> {
 	 */
 	public ConfirmationPage(final WebDriver driver) {
 		super(driver);
-		wait = new WebDriverWait(driver, 10);
+		wait = new WebDriverWait(driver, 12);
 	}
 	
 	/**

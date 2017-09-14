@@ -1,10 +1,7 @@
 package pages;
 
 import base.Page;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -21,6 +18,10 @@ public class HomePage extends Page<HomePage> {
 	private Wait<WebDriver> wait;
 	@FindBy(linkText = "Shop")
 	private WebElement Shop;
+	@FindBy(css = "a[data-modal='search']")
+	private WebElement SearchIcon;
+	@FindBy(css = "input[id='js-site-search-query-input']")
+	private WebElement SearchBox;
 	@FindBy(linkText = "Backpacks")
 	private WebElement Backpacks;
 	@FindBy(css = "div[data-product-title='Little America Backpack']")
@@ -77,6 +78,33 @@ public class HomePage extends Page<HomePage> {
 			driver.manage().addCookie(region);
 		}
 	}
+
+	/**
+	 * Clicks on the Search icon to open the Search Textbox.
+	 */
+	public void openSearch() {
+		SearchIcon.click();
+	}
+
+	/**
+	 * Clicks on the Search icon to open the Search Textbox.
+	 *
+	 * @param searchTerm String to enter in to the Search box
+	 */
+	public void inputSearchTerm(String searchTerm) {
+		wait.until(ExpectedConditions.elementToBeClickable(SearchBox));
+		SearchBox.sendKeys(searchTerm);
+	}
+
+	/**
+	 * Performs a Search Request.
+	 */
+	public void performSearch() {
+		wait.until(ExpectedConditions.elementToBeClickable(SearchBox));
+		SearchBox.sendKeys(Keys.RETURN);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
+	}
+
 
 	/**
 	 * Navigates to the Backpacks section using the navigation dropdown.

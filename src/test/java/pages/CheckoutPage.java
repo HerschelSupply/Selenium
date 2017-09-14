@@ -96,7 +96,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public CheckoutPage(final WebDriver driver) {
 		super(driver);
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 12);
 	}
 	
 	/**
