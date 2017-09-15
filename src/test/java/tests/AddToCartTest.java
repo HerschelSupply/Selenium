@@ -84,10 +84,12 @@ public class AddToCartTest extends TestBase {
     @Test
     @Parameters({"productName", "skuName"})
     public void verifyToaster(String expectedProductName, String expectedSkuName) {
-        Assert.assertEquals(productPage.getToasterProduct(), expectedProductName, String.format(
-                "The actual product name displayed in the Toaster did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getToasterProduct(), expectedProductName));
-        Assert.assertEquals(productPage.getToasterSku(), expectedSkuName, String.format(
-                "The actual SKU name displayed in the Toaster did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getToasterSku(), expectedSkuName));
+        String actualProductName = productPage.getToasterProduct();
+        String actualSkuName = productPage.getToasterSku();
+        Assert.assertEquals(actualProductName, expectedProductName, String.format(
+                "The actual product name displayed in the Toaster did not match the expected.  Actual: '%s'. Expected: '%s'", actualProductName, expectedProductName));
+        Assert.assertEquals(actualSkuName, expectedSkuName, String.format(
+                "The actual SKU name displayed in the Toaster did not match the expected.  Actual: '%s'. Expected: '%s'", actualSkuName, expectedSkuName));
     }
 
     /**
@@ -107,10 +109,12 @@ public class AddToCartTest extends TestBase {
     @Test
     @Parameters({"productName", "drawerSkuName"})
     public void verifyDrawer(String expectedProductName, String expectedSkuName) {
-        Assert.assertEquals(productPage.getDrawerProduct(), expectedProductName, String.format(
-                "The actual product name displayed in the Drawer did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getDrawerProduct(), expectedProductName));
-        Assert.assertEquals(productPage.getDrawerSku(), expectedSkuName, String.format(
-                "The actual SKU name displayed in the Drawer did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getDrawerSku(), expectedSkuName));
+        String actualProductName = productPage.getDrawerProduct();
+        String actualSkuName = productPage.getDrawerSku();
+        Assert.assertEquals(actualProductName, expectedProductName, String.format(
+                "The actual product name displayed in the Drawer did not match the expected.  Actual: '%s'. Expected: '%s'", actualProductName, expectedProductName));
+        Assert.assertEquals(actualSkuName, expectedSkuName, String.format(
+                "The actual SKU name displayed in the Drawer did not match the expected.  Actual: '%s'. Expected: '%s'", actualSkuName, expectedSkuName));
     }
 
     /**
@@ -130,10 +134,12 @@ public class AddToCartTest extends TestBase {
     @Test
     @Parameters({"productName", "drawerSkuName"})
     public void verifyCart(String expectedProductName, String expectedSkuName) {
-        Assert.assertEquals(checkoutPage.getCartProduct(), expectedProductName, String.format(
-                "The actual product name displayed in the Cart did not match the expected.  Actual: '%s'. Expected: '%s'", checkoutPage.getCartProduct(), expectedProductName));
-        Assert.assertEquals(checkoutPage.getCartSku(), expectedSkuName, String.format(
-                "The actual SKU name displayed in the Cart did not match the expected.  Actual: '%s'. Expected: '%s'", checkoutPage.getCartSku(), expectedSkuName));
+        String actualProductName = checkoutPage.getCartProduct();
+        String actualSkuName = checkoutPage.getCartSku();
+        Assert.assertEquals(actualProductName, expectedProductName, String.format(
+                "The actual product name displayed in the Cart did not match the expected.  Actual: '%s'. Expected: '%s'", actualProductName, expectedProductName));
+        Assert.assertEquals(actualSkuName, expectedSkuName, String.format(
+                "The actual SKU name displayed in the Cart did not match the expected.  Actual: '%s'. Expected: '%s'", actualSkuName, expectedSkuName));
     }
 
 }
