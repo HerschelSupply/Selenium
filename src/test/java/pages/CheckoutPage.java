@@ -296,7 +296,8 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public String getCartProduct() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		return CartProductName.getText();
+		//return CartProductName.getText();
+		return driver.findElement(By.cssSelector("p[class='m-y-0 text-cta bfx-product-name']")).getText();
 	}
 
 	/**
@@ -305,7 +306,8 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 * @return String containing the first SKU name displayed in the Cart
 	 */
 	public String getCartSku() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		return CartSkuName.getText();
+        //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		//return CartSkuName.getText();
+		return driver.findElement(By.cssSelector("p[class='m-y-0 bfx-product-color']")).getText();
 	}
 }
