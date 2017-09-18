@@ -77,15 +77,18 @@ public class ProductPage extends Page<ProductPage> {
 	public void selectSKU(String skuName) {
 		driver.findElement(By.cssSelector("input[data-color='"+skuName+"']")).findElement(By.xpath("../img")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
+		//wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='button button--primary hsco-add-to-cart']")));
 	}
 
 	/**
 	 * Add the product to cart.
 	 */
 	public void addToCart() {
-	    wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
-		AddToCart.click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+	    //wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='button button--primary hsco-add-to-cart']")));
+	    AddToCart.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
 	}
 

@@ -36,6 +36,7 @@ public class BrowseTest extends TestBase {
     @Parameters("country")
     public void setCookie(String country) {
         homePage.setCookie(country);
+        homePage.setCookie(country);
     }
 
 	/**
