@@ -3,7 +3,6 @@ package pages;
 import base.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -89,7 +88,6 @@ public class ProductPage extends Page<ProductPage> {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 	    //wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='button button--primary hsco-add-to-cart']")));
-		new Actions(driver).moveToElement(AddToCart).perform();
 	    AddToCart.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
 	}
