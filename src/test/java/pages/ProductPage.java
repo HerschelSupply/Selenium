@@ -9,9 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-import java.util.Set;
-
 /**
  * Handles interactions with the Herschel Product Page.
  * 
@@ -77,7 +74,6 @@ public class ProductPage extends Page<ProductPage> {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		driver.findElement(By.cssSelector("input[data-color='"+skuName+"']")).findElement(By.xpath("../img")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		//wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='button button--primary hsco-add-to-cart']")));
 	}
 
@@ -86,7 +82,6 @@ public class ProductPage extends Page<ProductPage> {
 	 */
 	public void addToCart() {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-	    //wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='button button--primary hsco-add-to-cart']")));
 	    AddToCart.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
@@ -98,7 +93,6 @@ public class ProductPage extends Page<ProductPage> {
      * @return String containing the product name
      */
     public String getProductName() {
-        //return driver.findElement(By.cssSelector("div[class='hsco-product-details'] h1[class='product-overview__title']")).getText();
         return ProductName.getText();
     }
 
@@ -117,11 +111,6 @@ public class ProductPage extends Page<ProductPage> {
      * @return String containing the product name displayed in the Toaster
      */
     public String getToasterProduct() {
-        //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
-        //List<WebElement> toasterInfo = Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p"));
-        //return toasterInfo.get(0).getText();
-        //return Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(0).getText();
         return driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(0).getText();
     }
 
@@ -131,11 +120,6 @@ public class ProductPage extends Page<ProductPage> {
      * @return String containing the SKU name displayed in the Toaster
      */
     public String getToasterSku() {
-        //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
-        //List<WebElement> toasterInfo = Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p"));
-        //return toasterInfo.get(1).getText();
-        //return Toaster.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(1).getText();
         return driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(1).getText();
     }
 
