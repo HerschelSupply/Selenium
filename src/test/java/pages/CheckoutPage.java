@@ -183,13 +183,6 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
 		ShippingMethodNext.click();
-		//If click failed (fairly common occurrence in checkout), attempt to click again
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-        if (driver.findElements(By.cssSelector("button[id='hsco-section3-next']")).size() > 0 ) {
-            if (driver.findElements(By.cssSelector("button[id='hsco-section3-next']")).get(0).isDisplayed()) {
-                ShippingMethodNext.click();
-            }
-        }
 		//Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 	}
