@@ -2,6 +2,7 @@ package pages;
 
 import base.Page;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -24,7 +25,7 @@ public class HomePage extends Page<HomePage> {
 	private WebElement SearchBox;
 	@FindBy(linkText = "Backpacks")
 	private WebElement Backpacks;
-	@FindBy(css = "div[data-product-title='Little America Backpack']")
+	@FindBy(css = "a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")
 	private WebElement LittleAmericaBackpack;
 
 	/**
@@ -122,7 +123,8 @@ public class HomePage extends Page<HomePage> {
 	 */
 	public void selectProductTile(String productName) {
 		if (productName.equals("Little America Backpack")) {
-			driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")).click();
+			new Actions(driver).moveToElement(LittleAmericaBackpack).perform();
+			driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS'] div[class='col-xs-6 product__title']")).click();
 		}
 		else {
 			System.out.println("selectProduct method has not been configured for your specified product: " + productName);
