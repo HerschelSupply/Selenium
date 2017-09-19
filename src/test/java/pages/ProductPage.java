@@ -3,6 +3,7 @@ package pages;
 import base.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -60,7 +61,6 @@ public class ProductPage extends Page<ProductPage> {
 			driver.get("https://qa.herschelsupplyco.co.uk/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 		else if(country.equals("EU")) {
-			//driver.get("https://qa.herschel.eu/shop/backpacks/little-america-backpack?v=");
 			//driver.get("https://qa.herschel.eu/shop/backpacks/mammoth-backpack-medium?v=");
 			driver.get("https://qa.herschel.eu/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
@@ -75,6 +75,7 @@ public class ProductPage extends Page<ProductPage> {
 	 * @param skuName name of the SKU to select
 	 */
 	public void selectSKU(String skuName) {
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		driver.findElement(By.cssSelector("input[data-color='"+skuName+"']")).findElement(By.xpath("../img")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		//wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
@@ -88,6 +89,7 @@ public class ProductPage extends Page<ProductPage> {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 	    //wait.until(ExpectedConditions.elementToBeClickable(AddToCart));
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='button button--primary hsco-add-to-cart']")));
+		new Actions(driver).moveToElement(AddToCart).perform();
 	    AddToCart.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
 	}
