@@ -122,9 +122,16 @@ public class HomePage extends Page<HomePage> {
 	 * @param productName name of the product to select
 	 */
 	public void selectProductTile(String productName) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+
+        jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpack);
+
+		//wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		if (productName.equals("Little America Backpack")) {
-			new Actions(driver).moveToElement(LittleAmericaBackpack).perform();
-			driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS'] div[class='col-xs-6 product__title']")).click();
+			//new Actions(driver).moveToElement(LittleAmericaBackpack).perform();
+			driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")).click();
+			//driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS'] div[class='col-xs-6 product__title']")).click();
 		}
 		else {
 			System.out.println("selectProduct method has not been configured for your specified product: " + productName);
