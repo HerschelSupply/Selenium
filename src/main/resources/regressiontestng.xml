@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suites">
+  <suite-files>
+    <suite-file path="testng/CheckoutPermutationsTestNG.xml"/>
+    <suite-file path="testng/ComponentRenderingTestNG.xml"/>
+  </suite-files>
+</suite>

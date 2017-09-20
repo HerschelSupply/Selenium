@@ -90,6 +90,22 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement CartProductName;
     @FindBy(css = "p[class='m-y-0 bfx-product-color']")
     private WebElement CartSkuName;
+    @FindBy(css = "input[name='hsco-giftcard']")
+    private WebElement GiftCard;
+    @FindBy(css = "button[class='button hsco-apply-giftcard-button discount__button text-grey4']")
+    private WebElement ApplyGiftCard;
+    @FindBy(css = "span[class='pull-right hsco-order-gc']")
+    private WebElement GiftCardApplied;
+    @FindBy(css = "p[class='text-cta hsco-add-coupon hsco-add-coupon-none']")
+    private WebElement AddDiscount;
+    @FindBy(css = "input[name='hsco-coupon']")
+    private WebElement CouponCode;
+    @FindBy(css = "button[class='button hsco-apply-coupon-button discount__button text-grey4']")
+    private WebElement ApplyCoupon;
+    @FindBy(css = "span[class='pull-right hsco-order-discount bfx-total-discount']")
+    private WebElement CouponApplied;
+    @FindBy(css = "span[class='pull-right hsco-order-shipping bfx-price bfx-total-shipping']")
+    private WebElement ShippingPrice;
 
     /**
 	 * Default constructor.
@@ -97,7 +113,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public CheckoutPage(final WebDriver driver) {
 		super(driver);
-        wait = new WebDriverWait(driver, 12);
+        wait = new WebDriverWait(driver, 15);
 	}
 	
 	/**
@@ -325,6 +341,29 @@ public class CheckoutPage extends Page<CheckoutPage> {
         wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
     }
 
+    /**
+     * Selects the specified shipping method.
+     *
+     * @param shippingMethod option in the shipping method dropdown to select
+     */
+    public void selectShippingMethod(String shippingMethod) {
+        //Need to wait for the loading overlay to disappear
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        ShippingMethods.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        for (WebElement option : ShippingMethods.findElements(By.tagName("option"))) {
+            if (option.getText().equals(shippingMethod)) {
+                option.click();
+            }
+        }
+        //Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
+        ShippingMethodNext.click();
+        //Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+    }
+
 	/**
 	 * Gets the first product name displayed in the Cart.
 	 *
@@ -369,4 +408,109 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		}
 		return sku;
 	}
+
+    /**
+     * Apply a Gift Card to the order.
+     *
+     * @param giftCard gift card code to be applied to the order
+     */
+    public void applyGiftCard(String giftCard) {
+        wait.until(ExpectedConditions.elementToBeClickable(GiftCard));
+        GiftCard.sendKeys(giftCard);
+        ApplyGiftCard.click();
+        //Need to wait for the loading overlay to disappear and Gift Card to appear before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.visibilityOf(GiftCardApplied));
+    }
+
+    /**
+     * Checks if the Gift Card was applied to the order.
+     *
+     * @return boolean if the Gift Card is Applied
+     */
+    public boolean isGiftCardApplied() {
+        String orderText = driver.findElement(By.cssSelector("div[class='h-order-subtotals h-copy2")).getText();
+        if(GiftCardApplied.isDisplayed() && orderText.contains("Gift Card") ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Selects the gift card as the payment method.
+     */
+    public void selectGiftCardPaymentMethod() {
+        //Need to wait for the loading overlay to disappear
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
+        PaymentMethods.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        for (WebElement option : PaymentMethods.findElements(By.tagName("option"))) {
+            if (option.getText().equals("Gift Card")) {
+                option.click();
+            }
+        }
+        //Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
+        PaymentNext.click();
+        //Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
+    }
+
+    /**
+     * Apply a discount to the order.
+     *
+     * @param couponCode to be applied to the order
+     */
+    public void applyDiscount(String couponCode) {
+        wait.until(ExpectedConditions.elementToBeClickable(AddDiscount));
+        driver.findElement(By.linkText("Add a discount")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(CouponCode));
+        CouponCode.sendKeys(couponCode);
+        ApplyCoupon.click();
+        //Need to wait for the loading overlay to disappear and Discount to appear before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.visibilityOf(CouponApplied));
+    }
+
+    /**
+     * Apply a shipping discount to the order.
+     *
+     * @param couponCode to be applied to the order
+     */
+    public void applyShippingDiscount(String couponCode) {
+        //wait.until(ExpectedConditions.elementToBeClickable(AddDiscount));
+        driver.findElement(By.linkText("Add a discount")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(CouponCode));
+        CouponCode.sendKeys(couponCode);
+        ApplyCoupon.click();
+        //Need to wait for the loading overlay to disappear and Discount to appear before proceeding
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+    }
+
+    /**
+     * Checks if the Coupon was applied to the order.
+     *
+     * @return boolean true if discount is applied
+     */
+    public boolean isDiscountApplied() {
+        String orderText = driver.findElement(By.cssSelector("div[class='h-order-subtotals h-copy2")).getText();
+        if(CouponApplied.isDisplayed() && orderText.contains("Discount") ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Gets the Shipping Price.
+     *
+     * @return String shipping price
+     */
+    public String getShippingPrice() {
+        return ShippingPrice.getText();
+    }
 }

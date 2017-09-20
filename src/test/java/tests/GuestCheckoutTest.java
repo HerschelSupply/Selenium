@@ -116,6 +116,17 @@ public class GuestCheckoutTest extends TestBase {
     }
 
     /**
+     * Selects the specified Shipping Method and proceeds to Payment Method selection.
+     *
+     * @param shippingMethod option in the shipping method dropdown to select
+     */
+    @Test
+    @Parameters("shippingMethod")
+    public void selectShippingMethod(String shippingMethod) {
+        checkoutPage.selectShippingMethod(shippingMethod);
+    }
+
+    /**
      * Enter a new Credit Card and proceed to the Order Review section.
      *
      * @param cardName value to enter in credit card field
@@ -136,6 +147,77 @@ public class GuestCheckoutTest extends TestBase {
     @Test
     public void placeOrder() {
         checkoutPage.placeOrder();
+    }
+
+    /**
+     * Applies the specified Gift Card Code to the Order.
+     *
+     * @param giftCard gift card code to be applied to the order
+     */
+    @Test
+    @Parameters("giftCard")
+    public void applyGiftCard(String giftCard) {
+        checkoutPage.applyGiftCard(giftCard);
+    }
+
+    /**
+     * Verifies the Gift Card was successfully applied to the Order.
+     */
+    @Test
+    public void verifyGiftCard() {
+        Assert.assertTrue(checkoutPage.isGiftCardApplied(), "Gift Card did not get applied to the order");
+    }
+
+    /**
+     * Proceeds past the Payment Method section by using the gift card to pay for the entire order.
+     */
+    @Test
+    public void selectGiftCardPaymentMethod() {
+        checkoutPage.selectGiftCardPaymentMethod();
+    }
+
+    /**
+     * Applies the specified Coupon Code to the Order.
+     *
+     * @param couponCode to be applied to the order
+     */
+    @Test
+    @Parameters("couponCode")
+    public void applyDiscount(String couponCode) {
+        checkoutPage.applyDiscount(couponCode);
+    }
+
+    /**
+     * Applies the specified Shipping Coupon Code to the Order.
+     *
+     * @param couponCode to be applied to the order
+     */
+    @Test
+    @Parameters("couponCode")
+    public void applyShippingDiscount(String couponCode) {
+        checkoutPage.applyShippingDiscount(couponCode);
+    }
+
+    /**
+     * Verifies the Discount was successfully applied to the Order.
+     */
+    @Test
+    public void verifyDiscount() {
+        Assert.assertTrue(checkoutPage.isDiscountApplied(), "Discount did not get applied to the order");
+    }
+
+    /**
+     * Verifies the Shipping Price matches the expected value.
+     *
+     * @param expectedShippingPrice Shipping Price
+     */
+    @Test
+    @Parameters("shippingPrice")
+    public void verifyShippingPrice(String expectedShippingPrice) {
+        String actualShippingPrice = checkoutPage.getShippingPrice();
+        Assert.assertEquals(actualShippingPrice, expectedShippingPrice, String.format(
+                "The actual Shipping Price did not match the expected.  Actual: '%s'. Expected: '%s'", actualShippingPrice, expectedShippingPrice));
+
     }
 
     /**

@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ComponentRenderingTestSuite" verbose="1">
+
+  <test name="Component Rendering Test" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <classes>
+      <class name="tests.ComponentRenderingTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadComponentPage" />
+          <include name="verifyHeroVideo" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>

@@ -5,9 +5,7 @@ import java.net.URL;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -24,7 +22,6 @@ public class WebDriverContainer {
 	private static WebDriver driver;
 	private final PropertyManager pm = new PropertyManager();
 	private ChromeOptions options = new ChromeOptions();
-    //private FirefoxOptions firefoxOptions = new FirefoxOptions();
 
     /**
      * Gets the webDriver.
@@ -44,9 +41,6 @@ public class WebDriverContainer {
      * @return WebDriver
      */
     public void startDriver() {
-    	//final DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-    	//capabilities.setJavascriptEnabled(true);
-    	//final DesiredCapabilities firefoxCaps = setFirefoxCapabilities(capabilities);
         final DesiredCapabilities firefoxCaps = DesiredCapabilities.firefox();
         final DesiredCapabilities htmlUnitCaps = DesiredCapabilities.htmlUnit();
     	
@@ -64,30 +58,8 @@ public class WebDriverContainer {
         }
     }
     
-//    private DesiredCapabilities setFirefoxCapabilities(final DesiredCapabilities origCaps) {
-//        final DesiredCapabilities retCaps = new DesiredCapabilities();
-//        final FirefoxProfile firefoxProfile = new FirefoxProfile();
-//        firefoxProfile.setAcceptUntrustedCertificates(true);
-//        firefoxProfile.setAssumeUntrustedCertificateIssuer(true);
-//        //retCaps.setCapability(FirefoxDriver.PROFILE, firefoxProfile);
-//        //retCaps.setCapability(FirefoxBinary(), fireFoxBinary);
-//        retCaps.merge(origCaps);
-//
- //       return retCaps;
- //   }
-    
     private WebDriver getFirefoxWebDriver(final DesiredCapabilities capabilities) {
-        //capabilities.setJavascriptEnabled(true);
-        //String firefoxDriverPath = pm.getProperty("firefox.driver.path");
-        //System.setProperty("webdriver.firefox.driver", firefoxDriverPath);
-        //capabilities.setCapability("marionette", true);
-        //FirefoxProfile fireFoxProfile = new FirefoxProfile();
-        //FirefoxBinary fireFoxBinary = new FirefoxBinary();
-        //return new FirefoxDriver(fireFoxBinary, fireFoxProfile, capabilities);//.manage().window().maximize();
-        //return new FirefoxDriver(capabilities);
-        //FirefoxOptions options = new FirefoxOptions().setProfile(new FirefoxProfile());
         return new FirefoxDriver(capabilities);
-        //return new FirefoxDriver();
     }
     
     private WebDriver getChromeWebDriver() {
