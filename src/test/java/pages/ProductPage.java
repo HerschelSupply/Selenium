@@ -2,6 +2,7 @@ package pages;
 
 import base.Page;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -111,7 +112,20 @@ public class ProductPage extends Page<ProductPage> {
      * @return String containing the product name displayed in the Toaster
      */
     public String getToasterProduct() {
-        return driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(0).getText();
+		String product = "no toaster product found";
+		boolean result = false;
+		int attempts = 0;
+		while(attempts < 2) {
+			try {
+				product = driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(0).getText();
+				result = true;
+				break;
+			} catch(StaleElementReferenceException e) {
+				System.out.print("Stale Element Exception occurred on Toaster Product");
+			}
+			attempts++;
+		}
+		return product;
     }
 
     /**
@@ -120,7 +134,20 @@ public class ProductPage extends Page<ProductPage> {
      * @return String containing the SKU name displayed in the Toaster
      */
     public String getToasterSku() {
-        return driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(1).getText();
+        String sku = "no toaster sku found";
+        boolean result = false;
+        int attempts = 0;
+        while(attempts < 2) {
+            try {
+                sku = driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(1).getText();
+                result = true;
+                break;
+            } catch(StaleElementReferenceException e) {
+                System.out.print("Stale Element Exception occurred on Toaster SKU");
+            }
+            attempts++;
+        }
+        return sku;
     }
 
 	/**

@@ -2,6 +2,7 @@ package pages;
 
 import base.Page;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -331,7 +332,20 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public String getCartProduct() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		return driver.findElement(By.cssSelector("p[class='m-y-0 text-cta bfx-product-name']")).getText();
+        String product = "no cart product found";
+        boolean result = false;
+        int attempts = 0;
+        while(attempts < 2) {
+        	try {
+				product = driver.findElement(By.cssSelector("p[class='m-y-0 text-cta bfx-product-name']")).getText();
+				result = true;
+				break;
+			} catch(StaleElementReferenceException e) {
+        		System.out.print("Stale Element Exception occurred on Cart Product");
+			}
+			attempts++;
+		}
+		return product;
 	}
 
 	/**
@@ -340,6 +354,19 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 * @return String containing the first SKU name displayed in the Cart
 	 */
 	public String getCartSku() {
-		return driver.findElement(By.cssSelector("p[class='m-y-0 bfx-product-color']")).getText();
+		String sku = "no cart sku found";
+		boolean result = false;
+		int attempts = 0;
+		while(attempts < 2) {
+			try {
+				sku = driver.findElement(By.cssSelector("p[class='m-y-0 bfx-product-color']")).getText();
+				result = true;
+				break;
+			} catch(StaleElementReferenceException e) {
+				System.out.print("Stale Element Exception occurred on Cart SKU");
+			}
+			attempts++;
+		}
+		return sku;
 	}
 }
