@@ -51,7 +51,6 @@
 			  <forkMode>once</forkMode>
 			  <suiteXmlFiles>
 				<suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
-				<suiteXmlFile>src/main/resources/regressiontestng.xml</suiteXmlFile>
 			  </suiteXmlFiles>
 			</configuration>
 		  </plugin>
