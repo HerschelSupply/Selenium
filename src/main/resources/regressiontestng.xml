@@ -4,5 +4,6 @@
   <suite-files>
     <suite-file path="testng/CheckoutPermutationsTestNG.xml"/>
     <suite-file path="testng/ComponentRenderingTestNG.xml"/>
+    <suite-file path="testng/GiftCardTestNG.xml"/>
   </suite-files>
 </suite>

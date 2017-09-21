@@ -9,7 +9,29 @@
 
 	<name>SeleniumTestNG</name>
 	<url>http://maven.apache.org</url>
-
+    <profiles>
+        <profile>
+            <id>smoke</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>regression</id>
+            <activation>
+                <property>
+                    <name>type</name>
+                    <value>regression</value>
+                </property>
+            </activation>
+            <properties>
+                <suiteXmlFile>src/main/resources/regressiontestng.xml</suiteXmlFile>
+            </properties>
+        </profile>
+    </profiles>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -50,7 +72,7 @@
 			<configuration>
 			  <forkMode>once</forkMode>
 			  <suiteXmlFiles>
-				<suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
+				<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
 			  </suiteXmlFiles>
 			</configuration>
 		  </plugin>

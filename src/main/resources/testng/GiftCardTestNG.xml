@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="GiftCardTestSuite" verbose="1">
+
+  <test name="Purchase Gift Card Test" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <parameter name="amount" value="$25.00"/>
+    <parameter name="recipientFirstName" value="Best"/>
+    <parameter name="recipientLastName" value="Friend"/>
+    <parameter name="recipientEmail" value="test.automation@herschel.com"/>
+    <parameter name="senderFirstName" value="Cool"/>
+    <parameter name="senderLastName" value="Person"/>
+    <parameter name="senderEmail" value="tim.morris@6dglobal.com"/>
+    <parameter name="message" value="Enjoy the gift"/>
+    <classes>
+      <class name="tests.GiftCardTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadGiftCard" />
+          <include name="selectAmount" />
+          <include name="enterRecipientInfo" />
+          <include name="enterSenderInfo" />
+          <include name="enterMessage" />
+          <include name="addToCart" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>
