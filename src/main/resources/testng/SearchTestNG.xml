@@ -11,6 +11,7 @@
           <include name="setCookie" />
           <include name="openSearch" />
           <include name="inputSearchTerm" />
+          <include name="verifyModalSearchResults" />
           <include name="performSearch" />
           <include name="verifySearchResults" />
         </methods>
@@ -27,6 +28,7 @@
           <include name="setCookie" />
           <include name="openSearch" />
           <include name="inputSearchTerm" />
+          <include name="verifyModalSearchResults" />
           <include name="performSearch" />
           <include name="verifySearchResults" />
         </methods>

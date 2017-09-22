@@ -162,4 +162,22 @@ public class HomePage extends Page<HomePage> {
 		//return false if the search result is not found
 		return false;
 	}
+
+	/**
+	 * Checks of the specified product appears in the Modal Search Results.
+	 *
+	 * @param productTitle used to check if this product is displayed in the Modal Search Results
+	 */
+	public boolean isModalSearchResultDisplayed(String productTitle) {
+		//wait for Modal Search Rsults ot appear
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='js-search-category-results']")));
+		List<WebElement> modalSearchResults = driver.findElements(By.cssSelector("div[class='js-search-category-results'] p[class='m-y-0']"));
+		for (WebElement modalSearchResult : modalSearchResults) {
+			if(modalSearchResult.getText().equals(productTitle)) {
+				return true;
+			}
+		}
+		//return false if the modal search result is not found
+		return false;
+	}
 }

@@ -67,6 +67,18 @@ public class SearchTest extends TestBase {
         homePage.performSearch();
     }
 
+    /**
+     * Verifies that the specified product is displayed in the Modal Search Results.
+     *
+     * @param productTitle used to check if this product is displayed in the Modal Search Results
+     */
+    @Test
+    @Parameters("productTitle")
+    public void verifyModalSearchResults(String productTitle) {
+        Assert.assertTrue(homePage.isModalSearchResultDisplayed(productTitle), String.format(
+                "The expected product was not displayed in the modal search results. Expected Product: '%s'", productTitle));
+    }
+
 
     /**
      * Verifies that the specified product is displayed in the Search Results.
