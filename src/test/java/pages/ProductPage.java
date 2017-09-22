@@ -31,7 +31,7 @@ public class ProductPage extends Page<ProductPage> {
     private WebElement CartIcon;
     @FindBy(css = "p[class='m-y-0 bfx-product-name']")
     private WebElement DrawerProductName;
-    @FindBy(css = "p[class='m-y-0 text-copy2 bfx-product-color']")
+	@FindBy(css = "p[class='m-y-0 text-copy2 bfx-product-color']")
     private WebElement DrawerSkuName;
     @FindBy(css = "a[href='/shop/checkout']")
     private WebElement CheckoutLink;

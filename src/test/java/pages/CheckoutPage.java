@@ -377,7 +377,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         while(attempts < 2) {
         	try {
 				product = driver.findElement(By.cssSelector("p[class='m-y-0 text-cta bfx-product-name']")).getText();
-				result = true;
+                result = true;
 				break;
 			} catch(StaleElementReferenceException e) {
         		System.out.print("Stale Element Exception occurred on Cart Product");
@@ -398,7 +398,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		int attempts = 0;
 		while(attempts < 2) {
 			try {
-				sku = driver.findElement(By.cssSelector("p[class='m-y-0 bfx-product-color']")).getText();
+                sku = driver.findElement(By.cssSelector("p[class='m-y-0 bfx-product-color']")).getText();
 				result = true;
 				break;
 			} catch(StaleElementReferenceException e) {

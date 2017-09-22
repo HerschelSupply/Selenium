@@ -6,11 +6,26 @@
     <parameter name="amount" value="$25.00"/>
     <parameter name="recipientFirstName" value="Best"/>
     <parameter name="recipientLastName" value="Friend"/>
-    <parameter name="recipientEmail" value="test.automation@herschel.com"/>
+    <parameter name="recipientEmail" value="test.automation2@herschel.com"/>
     <parameter name="senderFirstName" value="Cool"/>
     <parameter name="senderLastName" value="Person"/>
-    <parameter name="senderEmail" value="tim.morris@6dglobal.com"/>
+    <parameter name="senderEmail" value="test.automation@herschel.com"/>
     <parameter name="message" value="Enjoy the gift"/>
+    <parameter name="streetAddress" value="233 S Wacker Dr"/>
+    <parameter name="extendedAddress" value="Suite 100"/>
+    <parameter name="city" value="Chicago"/>
+    <parameter name="region" value="Illinois"/>
+    <parameter name="mailingCode" value="92802"/>
+    <parameter name="shippingCountry" value="United States"/>
+    <parameter name="phoneNumber" value="123-456-7890"/>
+    <parameter name="shippingMethod" value="Digital Delivery"/>
+    <parameter name="cardName" value="Test Automation"/>
+    <parameter name="cardNumber" value="4242424242424242"/>
+    <parameter name="expMonth" value="12"/>
+    <parameter name="expYear" value="20"/>
+    <parameter name="cvc" value="123"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
     <classes>
       <class name="tests.GiftCardTest">
         <methods>
@@ -21,6 +36,14 @@
           <include name="enterSenderInfo" />
           <include name="enterMessage" />
           <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="checkoutAsGuest" />
+          <include name="addShippingAddress" />
+          <include name="selectShippingMethod" />
+          <include name="addCreditCard" />
+          <include name="placeOrder" />
+          <include name="verifyOrderConfirmationMessage" />
+          <include name="verifyOrderConfirmationTitle" />
         </methods>
       </class>
     </classes>

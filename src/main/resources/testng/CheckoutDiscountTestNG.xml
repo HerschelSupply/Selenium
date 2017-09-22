@@ -1,0 +1,44 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="CheckoutDiscountTestSuite" verbose="1">
+
+    <test name="Checkout with Discount" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <parameter name="email" value="test.automation2@herschel.com"/>
+    <parameter name="givenName" value="Fish"/>
+    <parameter name="familyName" value="Monger"/>
+    <parameter name="streetAddress" value="86 Pike Place"/>
+    <parameter name="extendedAddress" value="Pike Place Fish Market"/>
+    <parameter name="city" value="Seattle"/>
+    <parameter name="region" value="Washington"/>
+    <parameter name="mailingCode" value="98101"/>
+    <parameter name="shippingCountry" value="United States"/>
+    <parameter name="phoneNumber" value="123-456-7890"/>
+    <parameter name="couponCode" value="AUTO50OFF"/>
+    <parameter name="cardName" value="Test Automation"/>
+    <parameter name="cardNumber" value="4242424242424242"/>
+    <parameter name="expMonth" value="12"/>
+    <parameter name="expYear" value="20"/>
+    <parameter name="cvc" value="123"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+        <class name="tests.GuestCheckoutTest">
+            <methods>
+                <include name="setCookie" />
+                <include name="loadLittleAmericaBackpack" />
+                <include name="addToCart" />
+                <include name="goToCheckout" />
+                <include name="checkoutAsGuest" />
+                <include name="addShippingAddress" />
+                <include name="selectDefaultShippingMethod" />
+                <include name="addCreditCard" />
+                <include name="applyDiscount" />
+                <include name="verifyDiscount" />
+                <include name="placeOrder" />
+                <include name="verifyOrderConfirmationMessage" />
+                <include name="verifyOrderConfirmationTitle" />
+            </methods>
+        </class>
+    </classes>
+    </test>
+</suite>

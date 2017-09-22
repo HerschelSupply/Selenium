@@ -1,0 +1,39 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="CheckoutGiftCardTestSuite" verbose="1">
+
+    <test name="Checkout with Gift Card" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <parameter name="email" value="test.automation1@herschel.com"/>
+    <parameter name="givenName" value="Party"/>
+    <parameter name="familyName" value="Of Five"/>
+    <parameter name="streetAddress" value="2311 Broadway"/>
+    <parameter name="extendedAddress" value=""/>
+    <parameter name="city" value="San Francisco"/>
+    <parameter name="region" value="California"/>
+    <parameter name="mailingCode" value="94115"/>
+    <parameter name="shippingCountry" value="United States"/>
+    <parameter name="phoneNumber" value="123-456-7890"/>
+    <parameter name="giftCard" value="GCDQFKDMW54DBINRM8"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.GuestCheckoutTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="checkoutAsGuest" />
+          <include name="addShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="applyGiftCard" />
+          <include name="verifyGiftCard" />
+          <include name="selectGiftCardPaymentMethod" />
+          <include name="placeOrder" />
+          <include name="verifyOrderConfirmationMessage" />
+          <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+    </test>
+</suite>

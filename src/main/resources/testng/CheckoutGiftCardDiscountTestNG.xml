@@ -1,0 +1,42 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="CheckoutDiscountGiftCardTestSuite" verbose="1">
+
+    <test name="Checkout with Discount and Gift Card" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <parameter name="email" value="test.automation3@herschel.com"/>
+    <parameter name="givenName" value="Minnie"/>
+    <parameter name="familyName" value="Polis"/>
+    <parameter name="streetAddress" value="818 S 2nd St"/>
+    <parameter name="extendedAddress" value=""/>
+    <parameter name="city" value="Minneapolis"/>
+    <parameter name="region" value="Minnesota"/>
+    <parameter name="mailingCode" value="55415"/>
+    <parameter name="shippingCountry" value="United States"/>
+    <parameter name="phoneNumber" value="123-456-7890"/>
+    <parameter name="giftCard" value="GCDQFKDMW54DBINRM8"/>
+    <parameter name="couponCode" value="AUTO50OFF"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+        <class name="tests.GuestCheckoutTest">
+            <methods>
+                <include name="setCookie" />
+                <include name="loadLittleAmericaBackpack" />
+                <include name="addToCart" />
+                <include name="goToCheckout" />
+                <include name="checkoutAsGuest" />
+                <include name="addShippingAddress" />
+                <include name="selectDefaultShippingMethod" />
+                <include name="applyGiftCard" />
+                <include name="verifyGiftCard" />
+                <include name="applyDiscount" />
+                <include name="verifyDiscount" />
+                <include name="selectGiftCardPaymentMethod" />
+                <include name="placeOrder" />
+                <include name="verifyOrderConfirmationMessage" />
+                <include name="verifyOrderConfirmationTitle" />
+            </methods>
+        </class>
+    </classes>
+    </test>
+</suite>

@@ -72,7 +72,7 @@ public class GuestCheckoutTest extends TestBase {
     }
 
     /**
-     * Selects the default Shipping Address and proceeds to Shipping Method selection.
+     * Proceeds with the Checkout as Guest option.
      * @param email String value to enter in email field
      */
     @Test
@@ -98,7 +98,7 @@ public class GuestCheckoutTest extends TestBase {
     public void addShippingAddress(String givenName, String familyName, String streetAddress, String extendedAddress, String city, String region, String mailingCode, String shippingCountry, String phoneNumber) {
         checkoutPage.addShippingAddress(givenName, familyName, streetAddress, extendedAddress, city, region, mailingCode, shippingCountry, phoneNumber);
     }
-
+    
     /**
      * Selects the default Shipping Method and proceeds to Payment Method selection.
      */

@@ -2,7 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression Suites">
   <suite-files>
-    <suite-file path="testng/CheckoutPermutationsTestNG.xml"/>
+    <suite-file path="testng/CheckoutGiftCardTestNG.xml"/>
+    <suite-file path="testng/CheckoutDiscountTestNG.xml"/>
+    <suite-file path="testng/CheckoutShippingDiscountTestNG.xml"/>
+    <suite-file path="testng/CheckoutGiftCardDiscountTestNG.xml"/>
     <suite-file path="testng/ComponentRenderingTestNG.xml"/>
     <suite-file path="testng/GiftCardTestNG.xml"/>
   </suite-files>
