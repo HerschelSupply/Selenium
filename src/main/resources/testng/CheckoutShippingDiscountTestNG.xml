@@ -35,6 +35,7 @@
                 <include name="selectShippingMethod" />
                 <include name="addCreditCard" />
                 <include name="applyShippingDiscount" />
+                <include name="validateTax" />
                 <include name="verifyShippingPrice" />
                 <include name="placeOrder" />
                 <include name="verifyOrderConfirmationMessage" />

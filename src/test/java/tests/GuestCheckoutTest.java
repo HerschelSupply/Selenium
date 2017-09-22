@@ -207,6 +207,15 @@ public class GuestCheckoutTest extends TestBase {
     }
 
     /**
+     * Verifies the Tax Amount is not $0.00.  Only applicable to US site
+     */
+    @Test
+    public void validateTax() {
+        String actualTax = checkoutPage.getTax();
+        Assert.assertFalse(actualTax.equals("$0.00"),"Tax amount displayed was $0.00 but expected taxes to be applied");
+    }
+
+    /**
      * Verifies the Shipping Price matches the expected value.
      *
      * @param expectedShippingPrice Shipping Price

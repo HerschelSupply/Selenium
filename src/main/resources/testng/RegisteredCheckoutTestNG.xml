@@ -42,6 +42,7 @@
           <include name="selectDefaultShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="selectDefaultPaymentMethod" />
+          <include name="validateTax" />
           <include name="placeOrder" />
             <include name="verifyOrderConfirmationMessage" />
             <include name="verifyOrderConfirmationTitle" />

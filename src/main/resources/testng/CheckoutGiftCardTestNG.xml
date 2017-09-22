@@ -28,6 +28,7 @@
           <include name="selectDefaultShippingMethod" />
           <include name="applyGiftCard" />
           <include name="verifyGiftCard" />
+          <include name="validateTax" />
           <include name="selectGiftCardPaymentMethod" />
           <include name="placeOrder" />
           <include name="verifyOrderConfirmationMessage" />

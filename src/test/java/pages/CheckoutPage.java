@@ -92,18 +92,20 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement CartSkuName;
     @FindBy(css = "input[name='hsco-giftcard']")
     private WebElement GiftCard;
-    @FindBy(css = "button[class='button hsco-apply-giftcard-button discount__button text-grey4']")
+    @FindBy(css = "button.hsco-apply-giftcard-button")
     private WebElement ApplyGiftCard;
-    @FindBy(css = "span[class='pull-right hsco-order-gc']")
+    @FindBy(css = "span.hsco-order-gc")
     private WebElement GiftCardApplied;
-    @FindBy(css = "p[class='text-cta hsco-add-coupon hsco-add-coupon-none']")
+    @FindBy(css = "p.hsco-add-coupon")
     private WebElement AddDiscount;
     @FindBy(css = "input[name='hsco-coupon']")
     private WebElement CouponCode;
-    @FindBy(css = "button[class='button hsco-apply-coupon-button discount__button text-grey4']")
+    @FindBy(css = "button.hsco-apply-coupon-button")
     private WebElement ApplyCoupon;
-    @FindBy(css = "span[class='pull-right hsco-order-discount bfx-total-discount']")
+    @FindBy(css = "span.hsco-order-discount")
     private WebElement CouponApplied;
+    @FindBy(css = "span.hsco-order-tax-amount")
+    private WebElement Tax;
     @FindBy(css = "span[class='pull-right hsco-order-shipping bfx-price bfx-total-shipping']")
     private WebElement ShippingPrice;
 
@@ -512,5 +514,14 @@ public class CheckoutPage extends Page<CheckoutPage> {
      */
     public String getShippingPrice() {
         return ShippingPrice.getText();
+    }
+
+    /**
+     * Gets the Tax Amount.
+     *
+     * @return String tax amount
+     */
+    public String getTax() {
+        return Tax.getText();
     }
 }
