@@ -67,49 +67,16 @@ public class SearchTest extends TestBase {
         homePage.performSearch();
     }
 
-    /**
-     * Clicks on the specified product tile.
-     *
-     * @param productName name of product to select
-     */
-    @Test
-    @Parameters("productName")
-    public void selectProductTile(String productName) {
-        homePage.selectProductTile(productName);
-    }
 
     /**
-     * Clicks on the specified sku option.
+     * Verifies that the specified product is displayed in the Search Results.
      *
-     * @param skuName name of product to select
+     * @param productTitle used to check if this product is displayed in the Search Results
      */
     @Test
-    @Parameters("skuName")
-    public void selectSKU(String skuName) {
-        productPage.selectSKU(skuName);
-    }
-
-    /**
-     * Verifies the product name on the product page.
-     *
-     * @param expectedProductName verify this productName appears on the product page
-     */
-    @Test
-    @Parameters("productName")
-    public void verifyProductName(String expectedProductName) {
-        Assert.assertTrue(productPage.getProductName().equalsIgnoreCase(expectedProductName), String.format(
-                "The actual product name displayed on the Product Page did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getProductName(), expectedProductName));
-    }
-
-    /**
-     * Verifies the selected SKU color on the product page.
-     *
-     * @param expectedSkuName verify this skuName appears in the Toaster
-     */
-    @Test
-    @Parameters("skuName")
-    public void verifySkuColor(String expectedSkuName) {
-        Assert.assertEquals(productPage.getSkuName(), expectedSkuName, String.format(
-                "The actual SKU name displayed on the Product Page did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getSkuName(), expectedSkuName));
+    @Parameters("productTitle")
+    public void verifySearchResults(String productTitle) {
+        Assert.assertTrue(homePage.isSearchResultDisplayed(productTitle), String.format(
+                "The expected product was not displayed in the search results. Expected Product: '%s'", productTitle));
     }
 }

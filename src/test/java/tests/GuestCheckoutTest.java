@@ -98,7 +98,7 @@ public class GuestCheckoutTest extends TestBase {
     public void addShippingAddress(String givenName, String familyName, String streetAddress, String extendedAddress, String city, String region, String mailingCode, String shippingCountry, String phoneNumber) {
         checkoutPage.addShippingAddress(givenName, familyName, streetAddress, extendedAddress, city, region, mailingCode, shippingCountry, phoneNumber);
     }
-    
+
     /**
      * Selects the default Shipping Method and proceeds to Payment Method selection.
      */

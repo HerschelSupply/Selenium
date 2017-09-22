@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 /**
  * Handles interactions with the Herschel Home Page.
  * 
@@ -103,7 +105,6 @@ public class HomePage extends Page<HomePage> {
 	public void performSearch() {
 		wait.until(ExpectedConditions.elementToBeClickable(SearchBox));
 		SearchBox.sendKeys(Keys.RETURN);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
 	}
 
 
@@ -144,5 +145,21 @@ public class HomePage extends Page<HomePage> {
 	 */
 	public void selectLittleAmericaBackpack() {
 		LittleAmericaBackpack.click();
+	}
+
+	/**
+	 * Checks of the specified product appears in the Search Results.
+	 *
+	 * @param productTitle used to check if this product is displayed in the Search Results
+	 */
+	public boolean isSearchResultDisplayed(String productTitle) {
+		List<WebElement> searchResults = driver.findElements(By.cssSelector("div[class='col-xs-6 product__title']"));
+		for (WebElement searchResult : searchResults) {
+			if(searchResult.getText().equals(productTitle)) {
+				return true;
+			}
+		}
+		//return false if the search result is not found
+		return false;
 	}
 }
