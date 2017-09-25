@@ -38,6 +38,18 @@ public class SearchTest extends TestBase {
         homePage.setCookie(country);
     }
 
+    /**
+     * Clicks on the Search Icon to open the Search Box.
+     *
+     * @param country home page to load
+     *
+     */
+    @Test
+    @Parameters("country")
+    public void loadHomePage(String country) {
+        homePage.load(country);
+    }
+
 	/**
      * Clicks on the Search Icon to open the Search Box.
      *
