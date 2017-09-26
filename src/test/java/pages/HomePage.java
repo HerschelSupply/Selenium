@@ -143,11 +143,14 @@ public class HomePage extends Page<HomePage> {
 
         jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpack);
 
-		//wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		if (productName.equals("Little America Backpack")) {
-			//new Actions(driver).moveToElement(LittleAmericaBackpack).perform();
-			driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")).click();
-			//driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS'] div[class='col-xs-6 product__title']")).click();
+			if(getPropertyManager().getProperty("testEnv").equals("prod")) {
+				//If testing in prod, look for the default SKU
+				driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00001-OS']")).click();
+			} else {
+				//If testing in QA, look for the SKU that has unlimited quantity
+				driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")).click();
+			}
 		}
 		else {
 			System.out.println("selectProduct method has not been configured for your specified product: " + productName);
@@ -170,7 +173,7 @@ public class HomePage extends Page<HomePage> {
 	public boolean isSearchResultDisplayed(String productTitle) {
 		List<WebElement> searchResults = driver.findElements(By.cssSelector("div[class='col-xs-6 product__title']"));
 		for (WebElement searchResult : searchResults) {
-			if(searchResult.getText().equals(productTitle)) {
+			if(searchResult.getText().startsWith(productTitle)) {
 				return true;
 			}
 		}
@@ -184,11 +187,11 @@ public class HomePage extends Page<HomePage> {
 	 * @param productTitle used to check if this product is displayed in the Modal Search Results
 	 */
 	public boolean isModalSearchResultDisplayed(String productTitle) {
-		//wait for Modal Search Rsults ot appear
+		//wait for Modal Search Results to appear
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='js-search-category-results']")));
 		List<WebElement> modalSearchResults = driver.findElements(By.cssSelector("div[class='js-search-category-results'] p[class='m-y-0']"));
 		for (WebElement modalSearchResult : modalSearchResults) {
-			if(modalSearchResult.getText().equals(productTitle)) {
+			if(modalSearchResult.getText().startsWith(productTitle)) {
 				return true;
 			}
 		}

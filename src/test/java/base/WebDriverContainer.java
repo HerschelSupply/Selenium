@@ -23,6 +23,10 @@ public class WebDriverContainer {
 	private final PropertyManager pm = new PropertyManager();
 	private ChromeOptions options = new ChromeOptions();
 
+    public static final String USERNAME = "herchelsupplyco";
+    public static final String ACCESS_KEY = "38f9d6bb-603a-4b41-86c9-7ac11450b3f0";
+    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+
     /**
      * Gets the webDriver.
      * 
@@ -43,7 +47,6 @@ public class WebDriverContainer {
     public void startDriver() {
         final DesiredCapabilities firefoxCaps = DesiredCapabilities.firefox();
         final DesiredCapabilities htmlUnitCaps = DesiredCapabilities.htmlUnit();
-    	
     	final String driverType = pm.getProperty("selenium.driverType", "local").toLowerCase();
 
         if ("remote".equals(driverType)) {
@@ -52,6 +55,15 @@ public class WebDriverContainer {
             driver = getHeadlessWebDriver(htmlUnitCaps);
         } else if ("chrome".equals(driverType)) {
             driver = getChromeWebDriver();
+        } else if ("sauceLabs".equals(driverType)) {
+            firefoxCaps.setCapability("platform", "Windows 7");
+            firefoxCaps.setCapability("version", "38.0");
+            try {
+                driver = new RemoteWebDriver(new URL(URL), firefoxCaps);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
         } else {
             driver = getFirefoxWebDriver(firefoxCaps);
             driver.manage().window().maximize();

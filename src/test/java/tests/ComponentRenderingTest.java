@@ -11,6 +11,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
+import java.net.MalformedURLException;
+
 /**
  * Test for verifying component rendering
  * 
@@ -25,7 +27,7 @@ public class ComponentRenderingTest extends TestBase {
      * Initialises the pages needed for the test.
      */
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         homePage = new HomePage(getDriver());
         wait = new WebDriverWait(getDriver(), 10);
     }
@@ -47,7 +49,7 @@ public class ComponentRenderingTest extends TestBase {
      *
      */
     @Test
-    public void loadComponentPage() {
+    public void loadComponentPage() throws MalformedURLException {
         getDriver().get("https://qa.herschel.com/component-test");
     }
 
@@ -55,7 +57,7 @@ public class ComponentRenderingTest extends TestBase {
      * Verify the Hero Video loads correctly.
      */
     @Test
-    public void verifyHeroVideo() {
+    public void verifyHeroVideo() throws MalformedURLException {
         Assert.assertTrue(getDriver().findElements(By.cssSelector("video[class='hero-video__video loaded']")).size() > 0,
                 "The Hero Video component did not render on the Component Rendering Page; https://qa.herschel.com/component-test");
     }

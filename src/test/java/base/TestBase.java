@@ -1,5 +1,6 @@
 package base;
 
+import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -38,7 +39,7 @@ public class TestBase {
 	/**
      * @return the PM
      */
-    public WebDriver getDriver() {
+    public WebDriver getDriver() throws MalformedURLException {
         return wdc.getDriver();
     }
 	

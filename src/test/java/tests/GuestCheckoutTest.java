@@ -7,6 +7,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
 
+import java.net.MalformedURLException;
+
 /**
  * Smoke Test for Herschel sites
  * 
@@ -23,7 +25,7 @@ public class GuestCheckoutTest extends TestBase {
      * Initialises the pages needed for the test.
      */
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         homePage = new HomePage(getDriver());
         productPage = new ProductPage(getDriver());
         checkoutPage = new CheckoutPage(getDriver());

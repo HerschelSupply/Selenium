@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.ProductPage;
 
+import java.net.MalformedURLException;
+
 /**
  * Test for browsing the Herschel sites
  * 
@@ -22,7 +24,7 @@ public class BrowseTest extends TestBase {
      * Initialises the pages needed for the test.
      */
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         homePage = new HomePage(getDriver());
         productPage = new ProductPage(getDriver());
     }

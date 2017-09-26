@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.net.MalformedURLException;
+
 /**
  * Email Order Confirmation Test for Herschel sites
  * 
@@ -34,7 +36,7 @@ public class OrderConfirmationTest extends TestBase {
      * Initialises the pages needed for the test.
      */
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         homePage = new HomePage(getDriver());
         productPage = new ProductPage(getDriver());
         checkoutPage = new CheckoutPage(getDriver());

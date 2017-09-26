@@ -22,7 +22,7 @@
   <test name="Search Test Parka" preserve-order="true">
     <parameter name="country" value="CA"/>
     <parameter name="searchTerm" value="parka"/>
-    <parameter name="productTitle" value="Forecast Parka Womens"/>
+    <parameter name="productTitle" value="Forecast Parka"/>
     <classes>
       <class name="tests.SearchTest">
         <methods>

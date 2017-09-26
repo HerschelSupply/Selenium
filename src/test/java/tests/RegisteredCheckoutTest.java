@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
+
 /**
  * Test to checkout as a registered guest on all Herschel sites
  * 
@@ -24,7 +26,7 @@ public class RegisteredCheckoutTest extends TestBase {
      * Initialises the pages needed for the test.
      */
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         homePage = new HomePage(getDriver());
         productPage = new ProductPage(getDriver());
         checkoutPage = new CheckoutPage(getDriver());

@@ -13,6 +13,8 @@ import pages.CheckoutPage;
 import pages.HomePage;
 import pages.ProductPage;
 
+import java.net.MalformedURLException;
+
 /**
  * Test for adding products to the cart
  *
@@ -28,7 +30,7 @@ public class AddToCartTest extends TestBase {
      * Initialises the pages needed for the test.
      */
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         homePage = new HomePage(getDriver());
         productPage = new ProductPage(getDriver());
         checkoutPage = new CheckoutPage(getDriver());

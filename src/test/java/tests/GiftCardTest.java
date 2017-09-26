@@ -7,6 +7,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
 
+import java.net.MalformedURLException;
+
 /**
  * Test for purchasing Gift Cards
  * 
@@ -23,7 +25,7 @@ public class GiftCardTest extends TestBase {
      * Initialises the pages needed for the test.
      */
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         homePage = new HomePage(getDriver());
         giftCardPage = new GiftCardPage(getDriver());
         checkoutPage = new CheckoutPage(getDriver());
