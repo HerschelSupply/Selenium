@@ -87,8 +87,8 @@
 			  <forkMode>once</forkMode>
 			  <suiteXmlFiles>
 				<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-				  <argLine>-DtestEnv=${testEnv}</argLine>
 			  </suiteXmlFiles>
+			  <argLine>-DtestEnv=${testEnv}</argLine>
 			</configuration>
 		  </plugin>
 		</plugins>
