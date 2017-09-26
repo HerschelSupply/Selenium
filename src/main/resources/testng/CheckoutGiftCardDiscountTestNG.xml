@@ -31,8 +31,8 @@
                 <include name="verifyGiftCard" />
                 <include name="applyDiscount" />
                 <include name="verifyDiscount" />
-                <include name="validateTax" />
                 <include name="selectGiftCardPaymentMethod" />
+                <include name="validateTax" />
                 <include name="placeOrder" />
                 <include name="verifyOrderConfirmationMessage" />
                 <include name="verifyOrderConfirmationTitle" />
