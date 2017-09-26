@@ -77,9 +77,9 @@ public class ProductPage extends Page<ProductPage> {
 	 * @param skuName name of the SKU to select
 	 */
 	public void selectSKU(String skuName) {
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		waitForLoadingOverlayToDisappear();
 		driver.findElement(By.cssSelector("input[data-color='"+skuName+"']")).findElement(By.xpath("../img")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		waitForLoadingOverlayToDisappear();
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.hsco-add-to-cart")));
 	}
 
@@ -87,7 +87,7 @@ public class ProductPage extends Page<ProductPage> {
 	 * Add the product to cart.
 	 */
 	public void addToCart() {
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
+		waitForLoadingOverlayToDisappear();
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.hsco-add-to-cart")));
 	    AddToCart.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.hsco-product-add")));
@@ -190,4 +190,11 @@ public class ProductPage extends Page<ProductPage> {
     public void clickDrawerCheckoutLink() {
         CheckoutLink.click();
     }
+
+	/**
+	 * Waits for the loading overlay to disappear.
+	 */
+	public void  waitForLoadingOverlayToDisappear() {
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
+	}
 }
