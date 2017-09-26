@@ -125,25 +125,23 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public void load(String country) {
         String prefix = "";
+        String baseURL;
         if(getPropertyManager().getProperty("testEnv").equals("prod")) {
             prefix = "prod.";
         }
 		if(country.equals("US")) {
-            String urlUS = getPropertyManager().getProperty(prefix+"url.US");
-            driver.get(urlUS+"/shop/checkout");
+            baseURL = getPropertyManager().getProperty(prefix+"url.US");
 		}
 		else if(country.equals("UK")) {
-            String urlUK = getPropertyManager().getProperty(prefix+"url.UK");
-            driver.get(urlUK+"/shop/checkout");
+            baseURL = getPropertyManager().getProperty(prefix+"url.UK");
 		}
 		else if(country.equals("EU")) {
-            String urlEU = getPropertyManager().getProperty(prefix+"url.EU");
-            driver.get(urlEU+"/shop/checkout");
+            baseURL = getPropertyManager().getProperty(prefix+"url.EU");
 		}
 		else {
-            String urlCA = getPropertyManager().getProperty(prefix+"url.CA");
-            driver.get(urlCA+"/shop/checkout");
+            baseURL = getPropertyManager().getProperty(prefix+"url.CA");
 		}
+        driver.get(baseURL+"/shop/checkout");
 		//wait for page loading to complete
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 	}

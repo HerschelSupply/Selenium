@@ -46,53 +46,52 @@ public class HomePage extends Page<HomePage> {
 	 */
 	public void load(String country) {
 		String prefix = "";
+		String baseURL;
 		if(getPropertyManager().getProperty("testEnv").equals("prod")) {
 			prefix = "prod.";
 		}
         if(country.equals("US")) {
-			String urlUS = getPropertyManager().getProperty(prefix+"url.US");
-            driver.get(urlUS);
+			baseURL = getPropertyManager().getProperty(prefix+"url.US");
         }
         else if(country.equals("UK")) {
-			String urlUK = getPropertyManager().getProperty(prefix+"url.UK");
-			driver.get(urlUK);
+			baseURL = getPropertyManager().getProperty(prefix+"url.UK");
         }
         else if(country.equals("EU")) {
-			String urlEU = getPropertyManager().getProperty(prefix+"url.EU");
-			driver.get(urlEU);
+			baseURL = getPropertyManager().getProperty(prefix+"url.EU");
         }
         else {
-			String urlCA = getPropertyManager().getProperty(prefix+"url.CA");
-			driver.get(urlCA);
+			baseURL = getPropertyManager().getProperty(prefix+"url.CA");
         }
+		driver.get(baseURL);
 	}
 
 	public void setCookie(String country) {
 		String prefix = "";
+		String baseURL;
 		if(getPropertyManager().getProperty("testEnv").equals("prod")) {
 			prefix = "prod.";
 		}
 		if(country.equals("US")) {
-			String urlUS = getPropertyManager().getProperty(prefix+"url.US");
-			driver.get(urlUS);
+			baseURL = getPropertyManager().getProperty(prefix+"url.US");
+			driver.get(baseURL);
 			Cookie region = new Cookie("geo-region", "US");
 			driver.manage().addCookie(region);
 		}
 		else if(country.equals("UK")) {
-			String urlUK = getPropertyManager().getProperty(prefix+"url.UK");
-			driver.get(urlUK);
+			baseURL = getPropertyManager().getProperty(prefix+"url.UK");
+			driver.get(baseURL);
 			Cookie region = new Cookie("geo-region", "UK");
 			driver.manage().addCookie(region);
 		}
 		else if(country.equals("EU")) {
-			String urlEU = getPropertyManager().getProperty(prefix+"url.EU");
-			driver.get(urlEU);
+			baseURL = getPropertyManager().getProperty(prefix+"url.EU");
+			driver.get(baseURL);
 			Cookie region = new Cookie("geo-region", "EU");
 			driver.manage().addCookie(region);
 		}
 		else {
-			String urlCA = getPropertyManager().getProperty(prefix+"url.CA");
-			driver.get(urlCA);
+			baseURL = getPropertyManager().getProperty(prefix+"url.CA");
+			driver.get(baseURL);
 			Cookie region = new Cookie("geo-region", "CA");
 			driver.manage().addCookie(region);
 		}

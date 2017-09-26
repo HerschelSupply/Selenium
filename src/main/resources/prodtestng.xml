@@ -2,6 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Suites">
   <suite-files>
+    <suite-file path="testng/AddToCartTestNG.xml"/>
+    <suite-file path="testng/BrowseTestNG.xml"/>
     <suite-file path="testng/SearchTestNG.xml"/>
   </suite-files>
 </suite>
