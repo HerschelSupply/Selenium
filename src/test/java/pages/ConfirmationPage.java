@@ -18,11 +18,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ConfirmationPage extends Page<ConfirmationPage> {
 
 	private Wait<WebDriver> wait;
-	@FindBy(css = "h1[class='header--md--mobile']")
+	@FindBy(css = "h1.header--md--mobile")
 	private WebElement ConfirmationTitle;
-	@FindBy(css = "p[class='h4']")
+	@FindBy(css = "p.h4")
 	private WebElement OrderNumber;
-	@FindBy(css = "p[class='text-copy1']")
+	@FindBy(css = "p.text-copy1")
 	private WebElement ConfirmationMessage;
 
 	/**
@@ -62,7 +62,7 @@ public class ConfirmationPage extends Page<ConfirmationPage> {
      */
     public String getConfirmationMessage() {
 		//wait for Order Summary Page to load
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='account order-summary container--fluid text-grey4 js-order-confirmation']")));
 		wait.until(ExpectedConditions.visibilityOf(ConfirmationMessage));
         return ConfirmationMessage.getText();

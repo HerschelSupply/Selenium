@@ -23,7 +23,7 @@ public class AccountPage extends Page<AccountPage> {
 	private WebElement PasswordField;
 	@FindBy(css = "button[id='hsco-signin']")
 	private WebElement SignInButton;
-	@FindBy(css = "button[class='button button--primary button--submit hsco-account-signout']")
+	@FindBy(css = "button.hsco-account-signout")
 	private WebElement SignOutButton;
 
 	/**

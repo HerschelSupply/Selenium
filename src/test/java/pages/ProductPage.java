@@ -19,11 +19,11 @@ import org.openqa.selenium.support.FindBy;
 public class ProductPage extends Page<ProductPage> {
 
 	private Wait<WebDriver> wait;
-	@FindBy(css = "button[class='button button--primary hsco-add-to-cart']")
+	@FindBy(css = "button.hsco-add-to-cart")
     private WebElement AddToCart;
-    @FindBy(css = "div[class='hsco-product-details'] h1[class='product-overview__title']")
+    @FindBy(css = "div.hsco-product-details h1.product-overview__title")
     private WebElement ProductName;
-    @FindBy(css = "div[class='hsco-product-details'] h4[class='hsco-product-color'] span")
+    @FindBy(css = "div.hsco-product-details h4.hsco-product-color span")
     private WebElement SkuName;
     @FindBy(css = "div[id='toast-container']")
     private WebElement Toaster;
@@ -80,17 +80,17 @@ public class ProductPage extends Page<ProductPage> {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
 		driver.findElement(By.cssSelector("input[data-color='"+skuName+"']")).findElement(By.xpath("../img")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='button button--primary hsco-add-to-cart']")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.hsco-add-to-cart")));
 	}
 
 	/**
 	 * Add the product to cart.
 	 */
 	public void addToCart() {
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='button button--primary hsco-add-to-cart']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.hsco-add-to-cart")));
 	    AddToCart.click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.hsco-product-add")));
 	}
 
     /**
@@ -122,7 +122,7 @@ public class ProductPage extends Page<ProductPage> {
 		int attempts = 0;
 		while(attempts < 2) {
 			try {
-				product = driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(0).getText();
+				product = driver.findElements(By.cssSelector("div.col-xs-5 p")).get(0).getText();
 				result = true;
 				break;
 			} catch(StaleElementReferenceException e) {
@@ -144,7 +144,7 @@ public class ProductPage extends Page<ProductPage> {
         int attempts = 0;
         while(attempts < 2) {
             try {
-                sku = driver.findElements(By.cssSelector("div[class='col-xs-5'] p")).get(1).getText();
+                sku = driver.findElements(By.cssSelector("div.col-xs-5 p")).get(1).getText();
                 result = true;
                 break;
             } catch(StaleElementReferenceException e) {
@@ -160,7 +160,7 @@ public class ProductPage extends Page<ProductPage> {
 	 */
 	public void openDrawer() {
         //wait for Toaster to disappear
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.hsco-product-add")));
         CartIcon.click();
         //wait for drawer to open
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/shop/checkout']")));

@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class GiftCardPage extends Page<GiftCardPage> {
 
 	private Wait<WebDriver> wait;
-	@FindBy(css = "button[class='button button--primary m-t-2']")
+	@FindBy(css = "button.button--primary")
     private WebElement AddToCart;
     @FindBy(css = "select[id='giftCardValue']")
     private WebElement Amount;
@@ -78,7 +78,7 @@ public class GiftCardPage extends Page<GiftCardPage> {
 	 * @param amount Gift Card amount
 	 */
 	public void selectAmount(String amount) {
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         for (WebElement option : Amount.findElements(By.tagName("option"))) {
             if (option.getText().equals(amount)) {
                 option.click();
@@ -126,7 +126,7 @@ public class GiftCardPage extends Page<GiftCardPage> {
      */
     public void addToCart() {
         AddToCart.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='hsco-product-add text-grey4']")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.hsco-product-add']")));
     }
 
 }

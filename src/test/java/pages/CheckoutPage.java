@@ -106,7 +106,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement CouponApplied;
     @FindBy(css = "span.hsco-order-tax-amount")
     private WebElement Tax;
-    @FindBy(css = "span[class='pull-right hsco-order-shipping bfx-price bfx-total-shipping']")
+    @FindBy(css = "span.hsco-order-shipping']")
     private WebElement ShippingPrice;
 
     /**
@@ -143,7 +143,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		}
         driver.get(baseURL+"/shop/checkout");
 		//wait for page loading to complete
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		PasswordField.sendKeys(password);
 		SignInButton.click();
 		//Need to wait for the loading overlay to disappear and the Shipping Address Next button to be clickable before proceeding
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		wait.until(ExpectedConditions.elementToBeClickable(ShippingAddressNext));
 	}
 
@@ -167,27 +167,27 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public void selectDefaultShippingAddress() {
 		//Need to wait for the loading overlay to disappear
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(ShippingAddresses));
 		ShippingAddresses.click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		for (WebElement option : ShippingAddresses.findElements(By.tagName("option"))) {
 			if (!option.getText().equals("Select an address")) {
 				option.click();
 			}
 		}
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		wait.until(ExpectedConditions.elementToBeClickable(ShippingAddressNext));
 		ShippingAddressNext.click();
 		//If click failed (fairly common occurrence in checkout), attempt to click again
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		if (driver.findElements(By.cssSelector("button[id='hsco-section2-next']")).size() > 0 ) {
 		    if (driver.findElements(By.cssSelector("button[id='hsco-section2-next']")).get(0).isDisplayed()) {
                 ShippingAddressNext.click();
             }
 		}
 		//Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
 	}
 
@@ -196,20 +196,20 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public void selectDefaultShippingMethod() {
 		//Need to wait for the loading overlay to disappear
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		ShippingMethods.click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		for (WebElement option : ShippingMethods.findElements(By.tagName("option"))) {
 			if (option.getText().equals("Standard Shipping - FREE")) {
 				option.click();
 			}
 		}
 		//Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
 		ShippingMethodNext.click();
 		//Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 	}
 
 	/**
@@ -217,28 +217,28 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 */
 	public void selectDefaultPaymentMethod() {
 		//Need to wait for the loading overlay to disappear
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
 		PaymentMethods.click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		for (WebElement option : PaymentMethods.findElements(By.tagName("option"))) {
 			if (option.getText().equals("Visa ending in *4242")) {
 				option.click();
 			}
 		}
 		//Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
 		PaymentNext.click();
 		//If click failed (fairly common occurrence in checkout), attempt to click again
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         if (driver.findElements(By.cssSelector("button[id='hsco-section4-next']")).size() > 0 ) {
             if (driver.findElements(By.cssSelector("button[id='hsco-section4-next']")).get(0).isDisplayed()) {
                 PaymentNext.click();
             }
         }
 		//Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
 	}
 
@@ -247,11 +247,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
      */
     public void placeOrder() {
     	//Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
 		PlaceOrder.click();
 		//If click failed (fairly common occurrence in checkout), attempt to click again
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).size() > 0 ) {
             if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).get(0).isDisplayed()) {
                 PlaceOrder.click();
@@ -269,7 +269,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         GuestEmailField.sendKeys(email);
         GuestCheckoutButton.click();
         //Need to wait for the loading overlay to disappear and the Add Address button to be clickable before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(AddAddressButton));
     }
 
@@ -309,14 +309,14 @@ public class CheckoutPage extends Page<CheckoutPage> {
         ShippingPhoneNumber.sendKeys(phoneNumber);
         AddAddressButton.click();
         //If click failed (fairly common occurrence in checkout), attempt to click again
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         if (driver.findElements(By.cssSelector("button[id='hsco-add-address']")).size() > 0 ) {
             if (driver.findElements(By.cssSelector("button[id='hsco-add-address']")).get(0).isDisplayed()) {
                 AddAddressButton.click();
             }
         }
         //Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
     }
 
@@ -338,14 +338,14 @@ public class CheckoutPage extends Page<CheckoutPage> {
         CardCVC.sendKeys(cvc);
         AddPaymentButton.click();
         //If click failed (fairly common occurrence in checkout), attempt to click again
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         if (driver.findElements(By.cssSelector("button[id='hsco-add-payment']")).size() > 0 ) {
             if (driver.findElements(By.cssSelector("button[id='hsco-add-payment']")).get(0).isDisplayed()) {
                 AddPaymentButton.click();
             }
         }
 		//Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
     }
 
@@ -356,20 +356,20 @@ public class CheckoutPage extends Page<CheckoutPage> {
      */
     public void selectShippingMethod(String shippingMethod) {
         //Need to wait for the loading overlay to disappear
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         ShippingMethods.click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         for (WebElement option : ShippingMethods.findElements(By.tagName("option"))) {
             if (option.getText().equals(shippingMethod)) {
                 option.click();
             }
         }
         //Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
         ShippingMethodNext.click();
         //Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
     }
 
 	/**
@@ -378,7 +378,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 * @return String containing the first product name displayed in the Cart
 	 */
 	public String getCartProduct() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         String product = "no cart product found";
         boolean result = false;
         int attempts = 0;
@@ -427,7 +427,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         GiftCard.sendKeys(giftCard);
         ApplyGiftCard.click();
         //Need to wait for the loading overlay to disappear and Gift Card to appear before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.visibilityOf(GiftCardApplied));
     }
 
@@ -437,7 +437,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
      * @return boolean if the Gift Card is Applied
      */
     public boolean isGiftCardApplied() {
-        String orderText = driver.findElement(By.cssSelector("div[class='h-order-subtotals h-copy2")).getText();
+        String orderText = driver.findElement(By.cssSelector("div.h-order-subtotals")).getText();
         if(GiftCardApplied.isDisplayed() && orderText.contains("Gift Card") ) {
             return true;
         } else {
@@ -450,21 +450,21 @@ public class CheckoutPage extends Page<CheckoutPage> {
      */
     public void selectGiftCardPaymentMethod() {
         //Need to wait for the loading overlay to disappear
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
         PaymentMethods.click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         for (WebElement option : PaymentMethods.findElements(By.tagName("option"))) {
             if (option.getText().equals("Gift Card")) {
                 option.click();
             }
         }
         //Need to wait for the loading overlay to disappear and the Payment Method Next button to be clickable before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
         PaymentNext.click();
         //Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
     }
 
@@ -480,7 +480,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         CouponCode.sendKeys(couponCode);
         ApplyCoupon.click();
         //Need to wait for the loading overlay to disappear and Discount to appear before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         wait.until(ExpectedConditions.visibilityOf(CouponApplied));
     }
 
@@ -496,7 +496,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         CouponCode.sendKeys(couponCode);
         ApplyCoupon.click();
         //Need to wait for the loading overlay to disappear and Discount to appear before proceeding
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
     }
 
     /**
@@ -505,7 +505,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
      * @return boolean true if discount is applied
      */
     public boolean isDiscountApplied() {
-        String orderText = driver.findElement(By.cssSelector("div[class='h-order-subtotals h-copy2")).getText();
+        String orderText = driver.findElement(By.cssSelector("div.h-order-subtotals")).getText();
         if(CouponApplied.isDisplayed() && orderText.contains("Discount") ) {
             return true;
         } else {
