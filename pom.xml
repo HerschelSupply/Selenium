@@ -17,6 +17,7 @@
             </activation>
             <properties>
                 <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
+				<testEnv>qa</testEnv>
             </properties>
         </profile>
         <profile>
@@ -29,8 +30,22 @@
             </activation>
             <properties>
                 <suiteXmlFile>src/main/resources/regressiontestng.xml</suiteXmlFile>
+				<testEnv>qa</testEnv>
             </properties>
         </profile>
+		<profile>
+			<id>prod</id>
+			<activation>
+				<property>
+					<name>type</name>
+					<value>prod</value>
+				</property>
+			</activation>
+			<properties>
+				<suiteXmlFile>src/main/resources/prodtestng.xml</suiteXmlFile>
+				<testEnv>prod</testEnv>
+			</properties>
+		</profile>
     </profiles>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -72,6 +87,7 @@
 			  <forkMode>once</forkMode>
 			  <suiteXmlFiles>
 				<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+				  <argLine>-DtestEnv=${testEnv}</argLine>
 			  </suiteXmlFiles>
 			</configuration>
 		  </plugin>
