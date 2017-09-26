@@ -20,6 +20,7 @@ public abstract class Page<T extends Page<T>> {
 
     /** The driver. */
 	protected WebDriver driver;
+    private final PropertyManager pm = new PropertyManager();
 
 	/**
 	 * Default constructor.
@@ -38,6 +39,13 @@ public abstract class Page<T extends Page<T>> {
      */
     protected final void setDriver(final WebDriver driver) {
         this.driver = driver;
+    }
+
+    /**
+     * @return the Property Manager
+     */
+    public PropertyManager getPropertyManager() {
+        return pm;
     }
 
     /**

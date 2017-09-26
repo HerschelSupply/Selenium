@@ -124,17 +124,25 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	 * @param country Herschel country site to load
 	 */
 	public void load(String country) {
+        String prefix = "";
+        if(getPropertyManager().getProperty("testEnv").equals("prod")) {
+            prefix = "prod.";
+        }
 		if(country.equals("US")) {
-			driver.get("https://qa.herschel.com/shop/checkout");
+            String urlUS = getPropertyManager().getProperty(prefix+"url.US");
+            driver.get(urlUS+"/shop/checkout");
 		}
 		else if(country.equals("UK")) {
-			driver.get("https://qa.herschelsupplyco.co.uk/shop/checkout");
+            String urlUK = getPropertyManager().getProperty(prefix+"url.UK");
+            driver.get(urlUK+"/shop/checkout");
 		}
 		else if(country.equals("EU")) {
-			driver.get("https://qa.herschel.eu/shop/checkout");
+            String urlEU = getPropertyManager().getProperty(prefix+"url.EU");
+            driver.get(urlEU+"/shop/checkout");
 		}
 		else {
-			driver.get("https://qa.herschel.ca/shop/checkout");
+            String urlCA = getPropertyManager().getProperty(prefix+"url.CA");
+            driver.get(urlCA+"/shop/checkout");
 		}
 		//wait for page loading to complete
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loadingoverlay']")));

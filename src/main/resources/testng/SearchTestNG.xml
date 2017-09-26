@@ -2,7 +2,7 @@
 <suite name="SearchTestSuite" verbose="1">
 
   <test name="Search Test Backpack" preserve-order="true">
-    <parameter name="country" value="CA"/>
+    <parameter name="country" value="US"/>
     <parameter name="searchTerm" value="Little America"/>
     <parameter name="productTitle" value="Little America Backpack"/>
     <classes>

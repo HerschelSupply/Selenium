@@ -51,18 +51,25 @@ public class ProductPage extends Page<ProductPage> {
 	 * @param country Herschel country site to load
 	 */
 	public void load(String country) {
+		String prefix = "";
+		if(getPropertyManager().getProperty("testEnv").equals("prod")) {
+			prefix = "prod.";
+		}
 		if(country.equals("US")) {
-			driver.get("https://qa.herschel.com/shop/backpacks/little-america-backpack?v=10014-00007-OS");
+			String urlUS = getPropertyManager().getProperty(prefix+"url.US");
+			driver.get(urlUS+"/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 		else if(country.equals("UK")) {
-			driver.get("https://qa.herschelsupplyco.co.uk/shop/backpacks/little-america-backpack?v=10014-00007-OS");
+			String urlUK = getPropertyManager().getProperty(prefix+"url.UK");
+			driver.get(urlUK+"/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 		else if(country.equals("EU")) {
-			//driver.get("https://qa.herschel.eu/shop/backpacks/mammoth-backpack-medium?v=");
-			driver.get("https://qa.herschel.eu/shop/backpacks/little-america-backpack?v=10014-00007-OS");
+			String urlEU = getPropertyManager().getProperty(prefix+"url.EU");
+			driver.get(urlEU+"/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 		else {
-			driver.get("https://qa.herschel.ca/shop/backpacks/little-america-backpack?v=10014-00007-OS");
+			String urlCA = getPropertyManager().getProperty(prefix+"url.CA");
+			driver.get(urlCA+"/shop/backpacks/little-america-backpack?v=10014-00007-OS");
 		}
 	}
 

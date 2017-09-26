@@ -52,17 +52,25 @@ public class GiftCardPage extends Page<GiftCardPage> {
 	 * @param country Herschel country site to load
 	 */
 	public void load(String country) {
+        String prefix = "";
+        if(getPropertyManager().getProperty("testEnv").equals("prod")) {
+            prefix = "prod.";
+        }
 		if(country.equals("US")) {
-			driver.get("https://qa.herschel.com/shop/collections/gift-card?v=HSC-GC-25");
+            String urlUS = getPropertyManager().getProperty(prefix+"url.US");
+            driver.get(urlUS+"/shop/collections/gift-card?v=HSC-GC-25");
 		}
 		else if(country.equals("UK")) {
-			driver.get("https://qa.herschelsupplyco.co.uk/shop/collections/gift-card?v=HSC-GC-25");
+            String urlUK = getPropertyManager().getProperty(prefix+"url.UK");
+            driver.get(urlUK+"/shop/collections/gift-card?v=HSC-GC-25");
 		}
 		else if(country.equals("EU")) {
-			driver.get("https://qa.herschel.eu/shop/collections/gift-card?v=HSC-GC-25");
+            String urlEU = getPropertyManager().getProperty(prefix+"url.EU");
+            driver.get(urlEU+"/shop/collections/gift-card?v=HSC-GC-25");
 		}
 		else {
-			driver.get("https://qa.herschel.ca/shop/collections/gift-card?v=HSC-GC-25");
+            String urlCA = getPropertyManager().getProperty(prefix+"url.CA");
+            driver.get(urlCA+"/shop/collections/gift-card?v=HSC-GC-25");
 		}
 	}
 

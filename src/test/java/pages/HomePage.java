@@ -45,38 +45,54 @@ public class HomePage extends Page<HomePage> {
 	 * @param country Herschel country site to load
 	 */
 	public void load(String country) {
+		String prefix = "";
+		if(getPropertyManager().getProperty("testEnv").equals("prod")) {
+			prefix = "prod.";
+		}
         if(country.equals("US")) {
-            driver.get("https://qa.herschel.com/");
+			String urlUS = getPropertyManager().getProperty(prefix+"url.US");
+            driver.get(urlUS);
         }
         else if(country.equals("UK")) {
-            driver.get("https://qa.herschelsupplyco.co.uk/");
+			String urlUK = getPropertyManager().getProperty(prefix+"url.UK");
+			driver.get(urlUK);
         }
         else if(country.equals("EU")) {
-            driver.get("https://qa.herschel.eu/");
+			String urlEU = getPropertyManager().getProperty(prefix+"url.EU");
+			driver.get(urlEU);
         }
         else {
-            driver.get("https://qa.herschel.ca/");
+			String urlCA = getPropertyManager().getProperty(prefix+"url.CA");
+			driver.get(urlCA);
         }
 	}
 
 	public void setCookie(String country) {
+		String prefix = "";
+		if(getPropertyManager().getProperty("testEnv").equals("prod")) {
+			prefix = "prod.";
+		}
 		if(country.equals("US")) {
-			driver.get("https://qa.herschel.com");
+			String urlUS = getPropertyManager().getProperty(prefix+"url.US");
+			driver.get(urlUS);
 			Cookie region = new Cookie("geo-region", "US");
 			driver.manage().addCookie(region);
 		}
 		else if(country.equals("UK")) {
-			driver.get("https://qa.herschelsupplyco.co.uk/");
+			String urlUK = getPropertyManager().getProperty(prefix+"url.UK");
+			driver.get(urlUK);
 			Cookie region = new Cookie("geo-region", "UK");
 			driver.manage().addCookie(region);
 		}
 		else if(country.equals("EU")) {
-			driver.get("https://qa.herschel.eu/");
+			String urlEU = getPropertyManager().getProperty(prefix+"url.EU");
+			driver.get(urlEU);
 			Cookie region = new Cookie("geo-region", "EU");
 			driver.manage().addCookie(region);
 		}
 		else {
-			driver.get("https://qa.herschel.ca/");
+			String urlCA = getPropertyManager().getProperty(prefix+"url.CA");
+			driver.get(urlCA);
 			Cookie region = new Cookie("geo-region", "CA");
 			driver.manage().addCookie(region);
 		}
