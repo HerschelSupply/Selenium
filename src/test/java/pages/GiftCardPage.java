@@ -126,7 +126,7 @@ public class GiftCardPage extends Page<GiftCardPage> {
      */
     public void addToCart() {
         AddToCart.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.hsco-product-add']")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.hsco-product-add")));
     }
 
 }

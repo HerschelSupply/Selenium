@@ -106,7 +106,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement CouponApplied;
     @FindBy(css = "span.hsco-order-tax-amount")
     private WebElement Tax;
-    @FindBy(css = "span.hsco-order-shipping']")
+    @FindBy(css = "span.hsco-order-shipping")
     private WebElement ShippingPrice;
 
     /**
