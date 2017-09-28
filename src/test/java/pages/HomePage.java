@@ -28,7 +28,9 @@ public class HomePage extends Page<HomePage> {
 	@FindBy(linkText = "Backpacks")
 	private WebElement Backpacks;
 	@FindBy(css = "a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")
-	private WebElement LittleAmericaBackpack;
+	private WebElement LittleAmericaBackpackQA;
+	@FindBy(css = "a[href='/shop/backpacks/little-america-backpack?v=10014-00001-OS']")
+	private WebElement LittleAmericaBackpackProd;
 
 	/**
 	 * Default constructor.
@@ -140,31 +142,21 @@ public class HomePage extends Page<HomePage> {
 	public void selectProductTile(String productName) {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-
-        jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpack);
-		System.out.print(driver.getCurrentUrl());
-
 		if (productName.equals("Little America Backpack")) {
 			if(driver.getCurrentUrl().startsWith("https://herschel")) {
 				//If testing in prod, look for the default SKU
-				System.out.print("testing123");
-				driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00001-OS']")).click();
+				jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpackProd);
+				LittleAmericaBackpackProd.click();
 			} else {
 				//If testing in QA, look for the SKU that has unlimited quantity
-				driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")).click();
+				jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpackQA);
+				LittleAmericaBackpackQA.click();
 			}
 		}
 		else {
 			System.out.println("selectProduct method has not been configured for your specified product: " + productName);
 		}
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
-	}
-
-	/**
-	 * Click the Little America Backpack Tile.
-	 */
-	public void selectLittleAmericaBackpack() {
-		LittleAmericaBackpack.click();
 	}
 
 	/**
