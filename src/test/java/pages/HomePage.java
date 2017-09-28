@@ -144,7 +144,7 @@ public class HomePage extends Page<HomePage> {
         jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpack);
 
 		if (productName.equals("Little America Backpack")) {
-			if(driver.getCurrentUrl().startsWith("http://herschel")) {
+			if(driver.getCurrentUrl().startsWith("https://herschel")) {
 				//If testing in prod, look for the default SKU
 				System.out.print("testing123");
 				driver.findElement(By.cssSelector("a[href='/shop/backpacks/little-america-backpack?v=10014-00001-OS']")).click();
