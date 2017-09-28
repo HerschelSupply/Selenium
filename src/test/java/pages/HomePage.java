@@ -142,6 +142,7 @@ public class HomePage extends Page<HomePage> {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
 
         jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpack);
+		System.out.print(driver.getCurrentUrl());
 
 		if (productName.equals("Little America Backpack")) {
 			if(driver.getCurrentUrl().startsWith("https://herschel")) {
