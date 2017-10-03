@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -55,10 +56,21 @@ public class WebDriverContainer {
             driver = getHeadlessWebDriver(htmlUnitCaps);
         } else if ("chrome".equals(driverType)) {
             driver = getChromeWebDriver();
-        } else if ("sauce".equals(driverType)) {
+        } else if ("saucewindowschrome".equals(driverType)) {
             DesiredCapabilities caps = DesiredCapabilities.chrome();
             caps.setCapability("platform", "Windows 10");
-            caps.setCapability("version", " 61.0");
+            //caps.setCapability("version", " 61.0");
+            try {
+                driver = new RemoteWebDriver(new URL(URL), caps);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        } else if ("sauce".equals(driverType)) {
+            DesiredCapabilities caps = DesiredCapabilities.chrome();
+            caps.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+            caps.setVersion(System.getenv("SELENIUM_VERSION"));
+            caps.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
+
             try {
                 driver = new RemoteWebDriver(new URL(URL), caps);
             } catch (MalformedURLException e) {
@@ -70,7 +82,7 @@ public class WebDriverContainer {
             driver.manage().window().maximize();
         }
     }
-    
+
     private WebDriver getFirefoxWebDriver(final DesiredCapabilities capabilities) {
         return new FirefoxDriver(capabilities);
     }
