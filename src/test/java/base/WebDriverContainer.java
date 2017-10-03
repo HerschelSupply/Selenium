@@ -55,11 +55,12 @@ public class WebDriverContainer {
             driver = getHeadlessWebDriver(htmlUnitCaps);
         } else if ("chrome".equals(driverType)) {
             driver = getChromeWebDriver();
-        } else if ("sauceLabs".equals(driverType)) {
-            firefoxCaps.setCapability("platform", "Windows 7");
-            firefoxCaps.setCapability("version", "38.0");
+        } else if ("sauce".equals(driverType)) {
+            DesiredCapabilities caps = DesiredCapabilities.chrome();
+            caps.setCapability("platform", "Windows 10");
+            caps.setCapability("version", " 61.0");
             try {
-                driver = new RemoteWebDriver(new URL(URL), firefoxCaps);
+                driver = new RemoteWebDriver(new URL(URL), caps);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
