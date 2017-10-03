@@ -89,7 +89,7 @@ public class ProductPage extends Page<ProductPage> {
 		//If on the Little America Backpack, the Add to Card button may appear below the fold, making it unclickable.
 		//Scrolling down a little makes the button appear on screen and be clickable.
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("arguments[0].scrollIntoView()", ProductName);
+		jse.executeScript("arguments[0].scrollIntoView()", SkuName);
 	    AddToCart.click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.hsco-product-add")));
 	}
