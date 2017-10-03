@@ -2,6 +2,7 @@ package pages;
 
 import base.Page;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -125,6 +126,10 @@ public class GiftCardPage extends Page<GiftCardPage> {
      * Add the gift card to cart.
      */
     public void addToCart() {
+        //The Add to Card button may appear below the fold, making it unclickable.
+        //Scrolling down a little makes the button appear on screen and be clickable.
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView()", Amount);
         AddToCart.click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.hsco-product-add")));
     }
