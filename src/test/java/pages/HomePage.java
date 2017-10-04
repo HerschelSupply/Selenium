@@ -151,6 +151,7 @@ public class HomePage extends Page<HomePage> {
 			} else {
 				//If testing in QA, look for the SKU that has unlimited quantity
 				jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpackQA);
+				jse.executeScript("window.scrollBy(0,-450)", "");
 				LittleAmericaBackpackQA.click();
 			}
 		}
