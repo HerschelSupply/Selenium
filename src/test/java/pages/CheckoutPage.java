@@ -1,10 +1,7 @@
 package pages;
 
 import base.Page;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -307,6 +304,10 @@ public class CheckoutPage extends Page<CheckoutPage> {
             }
         }
         ShippingPhoneNumber.sendKeys(phoneNumber);
+        //On smaller screens, the Add Address Button appears below the fold, making it unclickable.
+        //Scrolling down a little makes the button appear on screen and be clickable.
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView()", ShippingPhoneNumber);
         AddAddressButton.click();
         //If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
