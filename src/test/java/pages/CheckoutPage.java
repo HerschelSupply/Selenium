@@ -307,7 +307,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         //On smaller screens, the Add Address Button appears below the fold, making it unclickable.
         //Scrolling down a little makes the button appear on screen and be clickable.
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("arguments[0].scrollIntoView()", ShippingPhoneNumber);
+        jse.executeScript("arguments[0].scrollIntoView()", ShippingCity);
         AddAddressButton.click();
         //If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
