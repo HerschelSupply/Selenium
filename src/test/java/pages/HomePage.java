@@ -146,12 +146,12 @@ public class HomePage extends Page<HomePage> {
 			if(driver.getCurrentUrl().startsWith("https://herschel")) {
 				//If testing in prod, look for the default SKU
 				jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpackProd);
-				jse.executeScript("window.scrollBy(0,-450)", "");
+				jse.executeScript("window.scrollBy(0,-250)", "");
 				LittleAmericaBackpackProd.click();
 			} else {
 				//If testing in QA, look for the SKU that has unlimited quantity
 				jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpackQA);
-				jse.executeScript("window.scrollBy(0,-450)", "");
+				jse.executeScript("window.scrollBy(0,-250)", "");
 				LittleAmericaBackpackQA.click();
 			}
 		}
