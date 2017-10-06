@@ -19,7 +19,7 @@ import java.util.List;
 public class HomePage extends Page<HomePage> {
 
 	private Wait<WebDriver> wait;
-	@FindBy(linkText = "Shop")
+	@FindBy(css = "a[data-modal='shop']")
 	private WebElement Shop;
 	@FindBy(css = "a[data-modal='search']")
 	private WebElement SearchIcon;
