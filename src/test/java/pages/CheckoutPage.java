@@ -97,7 +97,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement AddDiscount;
     @FindBy(css = "input[name='hsco-coupon']")
     private WebElement CouponCode;
-    @FindBy(css = "button.hsco-apply-coupon-button")
+    @FindBy(css = "button.button.hsco-apply-giftcard-button.discount__button")
     private WebElement ApplyCoupon;
     @FindBy(css = "span.hsco-order-discount")
     private WebElement CouponApplied;
