@@ -16,7 +16,7 @@ import org.openqa.selenium.support.FindBy;
 public class ProductPage extends Page<ProductPage> {
 
 	private Wait<WebDriver> wait;
-	@FindBy(css = "button.hsco-add-to-cart")
+	@FindBy(css = "button.button.button--primary.hsco-add-to-cart")
     private WebElement AddToCart;
     @FindBy(css = "div.hsco-product-details h1.product-overview__title")
     private WebElement ProductName;
