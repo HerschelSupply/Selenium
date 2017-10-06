@@ -100,6 +100,23 @@ public class HomePage extends Page<HomePage> {
 	}
 
 	/**
+	 * Closes the skinny banner.
+	 */
+	public void closeBanner() {
+		List<WebElement> closeBanner = driver.findElements(By.cssSelector("i.close-skinny"));
+		if (closeBanner.size() > 0) {
+			try {
+				closeBanner.get(0).click();
+			} catch (Exception e) {
+				System.out.print("Duplicate close banner element found");
+			}
+		}
+		if (closeBanner.size() > 1) {
+			closeBanner.get(1).click();
+		}
+	}
+
+	/**
 	 * Clicks on the Search icon to open the Search Textbox.
 	 */
 	public void openSearch() {

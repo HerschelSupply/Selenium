@@ -9,6 +9,7 @@
       <class name="tests.SearchTest">
         <methods>
           <include name="setCookie" />
+          <include name="closeBanner" />
           <include name="loadHomePage" />
           <include name="openSearch" />
           <include name="inputSearchTerm" />
@@ -27,6 +28,7 @@
       <class name="tests.SearchTest">
         <methods>
           <include name="setCookie" />
+          <include name="closeBanner" />
           <include name="loadHomePage" />
           <include name="openSearch" />
           <include name="inputSearchTerm" />

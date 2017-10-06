@@ -52,6 +52,15 @@ public class SearchTest extends TestBase {
         homePage.load(country);
     }
 
+    /**
+     * Closes the skinny banner.
+     *
+     */
+    @Test
+    public void closeBanner() {
+        homePage.closeBanner();
+    }
+
 	/**
      * Clicks on the Search Icon to open the Search Box.
      *

@@ -41,6 +41,15 @@ public class BrowseTest extends TestBase {
         homePage.setCookie(country);
     }
 
+    /**
+     * Closes the skinny banner.
+     *
+     */
+    @Test
+    public void closeBanner() {
+        homePage.closeBanner();
+    }
+
 	/**
      * Navigates to the Backpacks section.
      *
