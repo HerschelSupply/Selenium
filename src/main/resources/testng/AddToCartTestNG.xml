@@ -15,9 +15,9 @@
           <include name="addToCart" />
           <include name="verifyToaster" />
           <include name="openDrawer" />
-          <include name="verifyDrawer" />
+          <!--include name="verifyDrawer" /-->
           <include name="clickDrawerCheckoutLink" />
-          <include name="verifyCart" />
+          <!--include name="verifyCart" /-->
         </methods>
       </class>
     </classes>
@@ -36,9 +36,9 @@
           <include name="addToCart" />
           <include name="verifyToaster" />
           <include name="openDrawer" />
-          <include name="verifyDrawer" />
+          <!--include name="verifyDrawer" /-->
           <include name="clickDrawerCheckoutLink" />
-          <include name="verifyCart" />
+          <!--include name="verifyCart" /-->
         </methods>
       </class>
     </classes>
@@ -57,9 +57,9 @@
           <include name="addToCart" />
           <include name="verifyToaster" />
           <include name="openDrawer" />
-          <include name="verifyDrawer" />
+          <!--include name="verifyDrawer" /-->
           <include name="clickDrawerCheckoutLink" />
-          <include name="verifyCart" />
+          <!--include name="verifyCart" /-->
         </methods>
       </class>
     </classes>
@@ -78,9 +78,9 @@
           <include name="addToCart" />
           <include name="verifyToaster" />
           <include name="openDrawer" />
-          <include name="verifyDrawer" />
+          <!--include name="verifyDrawer" /-->
           <include name="clickDrawerCheckoutLink" />
-          <include name="verifyCart" />
+          <!--include name="verifyCart" /-->
         </methods>
       </class>
     </classes>
