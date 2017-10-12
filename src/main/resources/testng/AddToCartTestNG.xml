@@ -16,7 +16,7 @@
           <include name="verifyToaster" />
           <include name="openDrawer" />
           <!--include name="verifyDrawer" /-->
-          <include name="clickDrawerCheckoutLink" />
+          <!--include name="clickDrawerCheckoutLink" /-->
           <!--include name="verifyCart" /-->
         </methods>
       </class>
@@ -37,7 +37,7 @@
           <include name="verifyToaster" />
           <include name="openDrawer" />
           <!--include name="verifyDrawer" /-->
-          <include name="clickDrawerCheckoutLink" />
+          <!--include name="clickDrawerCheckoutLink" /-->
           <!--include name="verifyCart" /-->
         </methods>
       </class>
@@ -58,7 +58,7 @@
           <include name="verifyToaster" />
           <include name="openDrawer" />
           <!--include name="verifyDrawer" /-->
-          <include name="clickDrawerCheckoutLink" />
+          <!--include name="clickDrawerCheckoutLink" /-->
           <!--include name="verifyCart" /-->
         </methods>
       </class>
@@ -79,7 +79,7 @@
           <include name="verifyToaster" />
           <include name="openDrawer" />
           <!--include name="verifyDrawer" /-->
-          <include name="clickDrawerCheckoutLink" />
+          <!--include name="clickDrawerCheckoutLink" /-->
           <!--include name="verifyCart" /-->
         </methods>
       </class>
