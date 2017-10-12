@@ -9,7 +9,6 @@
       <class name="tests.BrowseTest">
         <methods>
           <include name="setCookie" />
-          <!--include name="closeBanner" /-->
           <include name="navigateToBackpacks" />
           <include name="selectProductTile" />
           <include name="selectSKU" />
@@ -27,7 +26,6 @@
       <class name="tests.BrowseTest">
         <methods>
           <include name="setCookie" />
-          <!--include name="closeBanner" /-->
           <include name="navigateToBackpacks" />
           <include name="selectProductTile" />
           <include name="selectSKU" />
@@ -45,7 +43,6 @@
       <class name="tests.BrowseTest">
         <methods>
           <include name="setCookie" />
-          <!--include name="closeBanner" /-->
           <include name="navigateToBackpacks" />
           <include name="selectProductTile" />
           <include name="selectSKU" />
@@ -63,7 +60,6 @@
       <class name="tests.BrowseTest">
         <methods>
           <include name="setCookie" />
-          <!--include name="closeBanner" /-->
           <include name="navigateToBackpacks" />
           <include name="selectProductTile" />
           <include name="selectSKU" />
