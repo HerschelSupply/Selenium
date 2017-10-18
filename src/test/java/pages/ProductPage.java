@@ -32,6 +32,13 @@ public class ProductPage extends Page<ProductPage> {
     private WebElement DrawerSkuName;
     @FindBy(css = "a[href='/shop/checkout']")
     private WebElement CheckoutLink;
+    //Mobile Device Elements
+	@FindBy(css = "h1.product-overview__title")
+	private WebElement ProductNameMobile;
+	@FindBy(css = "h4.hsco-product-color")
+	private WebElement SkuNameMobile;
+	@FindBy(css = "div.colors-list")
+	private WebElement SkuSelectionMobile;
 
 	/**
 	 * Default constructor.
@@ -197,5 +204,38 @@ public class ProductPage extends Page<ProductPage> {
 	 */
 	public void  waitForLoadingOverlayToDisappear() {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
+	}
+
+	/**
+	 * Clicks on the specified product SKU on a Mobile Device.
+	 *
+	 * @param skuName name of the SKU to select
+	 */
+	public void selectSKUMobile(String skuName) {
+		waitForLoadingOverlayToDisappear();
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView()", SkuSelectionMobile);
+		jse.executeScript("window.scrollBy(0,-250)", "");
+		driver.findElement(By.cssSelector("input[data-color='"+skuName+"']")).findElement(By.xpath("../img")).click();
+		waitForLoadingOverlayToDisappear();
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.hsco-add-to-cart")));
+	}
+
+	/**
+	 * Gets the product name on the Product Page on a mobile device.
+	 *
+	 * @return String containing the product name
+	 */
+	public String getProductNameMobile() {
+		return ProductNameMobile.getText();
+	}
+
+	/**
+	 * Gets the SKU name on the Product Page on a mobile device.
+	 *
+	 * @return String containing the SKU name
+	 */
+	public String getSkuNameMobile() {
+		return SkuNameMobile.getText();
 	}
 }

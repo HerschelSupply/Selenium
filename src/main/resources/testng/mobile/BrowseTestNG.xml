@@ -1,0 +1,72 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="BrowseTestSuiteMobile" verbose="1">
+
+  <test name="Browse Test CA Mobile" preserve-order="true">
+    <parameter name="country" value="CA"/>
+    <parameter name="productName" value="Little America Backpack"/>
+    <parameter name="skuName" value="Canteen Crosshatch"/>
+    <classes>
+      <class name="tests.BrowseTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="navigateToBackpacksMobile" />
+          <include name="selectProductTile" />
+          <include name="selectSKUMobile" />
+          <include name="verifyProductNameMobile" />
+          <include name="verifySkuColorMobile" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Browse Test US Mobile" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <parameter name="productName" value="Little America Backpack"/>
+    <parameter name="skuName" value="Canteen Crosshatch"/>
+    <classes>
+      <class name="tests.BrowseTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="navigateToBackpacksMobile" />
+          <include name="selectProductTile" />
+          <include name="selectSKUMobile" />
+          <include name="verifyProductNameMobile" />
+          <include name="verifySkuColorMobile" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Browse Test EU Mobile" preserve-order="true">
+    <parameter name="country" value="EU"/>
+    <parameter name="productName" value="Little America Backpack"/>
+    <parameter name="skuName" value="Canteen Crosshatch"/>
+    <classes>
+      <class name="tests.BrowseTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="navigateToBackpacksMobile" />
+          <include name="selectProductTile" />
+          <include name="selectSKUMobile" />
+          <include name="verifyProductNameMobile" />
+          <include name="verifySkuColorMobile" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Browse Test UK Mobile" preserve-order="true">
+    <parameter name="country" value="UK"/>
+    <parameter name="productName" value="Little America Backpack"/>
+    <parameter name="skuName" value="Canteen Crosshatch"/>
+    <classes>
+      <class name="tests.BrowseTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="navigateToBackpacksMobile" />
+          <include name="selectProductTile" />
+          <include name="selectSKUMobile" />
+          <include name="verifyProductNameMobile" />
+          <include name="verifySkuColorMobile" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>

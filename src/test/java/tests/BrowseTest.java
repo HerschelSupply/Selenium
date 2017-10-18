@@ -104,4 +104,48 @@ public class BrowseTest extends TestBase {
         Assert.assertEquals(productPage.getSkuName(), expectedSkuName, String.format(
                 "The actual SKU name displayed on the Product Page did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getSkuName(), expectedSkuName));
     }
+
+    /**
+     * Navigates to the Backpacks section on a mobile device.
+     *
+     */
+    @Test
+    public void navigateToBackpacksMobile() {
+        homePage.navigateToBackpacksMobile();
+    }
+
+    /**
+     * Clicks on the specified sku option on a mobile device.
+     *
+     * @param skuName name of product to select
+     */
+    @Test
+    @Parameters("skuName")
+    public void selectSKUMobile(String skuName) {
+        productPage.selectSKUMobile(skuName);
+    }
+
+    /**
+     * Verifies the product name on the product page on a mobile device.
+     *
+     * @param expectedProductName verify this productName appears on the product page
+     */
+    @Test
+    @Parameters("productName")
+    public void verifyProductNameMobile(String expectedProductName) {
+        Assert.assertTrue(productPage.getProductNameMobile().equalsIgnoreCase(expectedProductName), String.format(
+                "The actual product name displayed on the Product Page did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getProductName(), expectedProductName));
+    }
+
+    /**
+     * Verifies the selected SKU color on the product page on a mobile device.
+     *
+     * @param expectedSkuName verify this skuName appears in the Toaster
+     */
+    @Test
+    @Parameters("skuName")
+    public void verifySkuColorMobile(String expectedSkuName) {
+        Assert.assertEquals(productPage.getSkuNameMobile(), expectedSkuName, String.format(
+                "The actual SKU name displayed on the Product Page did not match the expected.  Actual: '%s'. Expected: '%s'", productPage.getSkuName(), expectedSkuName));
+    }
 }

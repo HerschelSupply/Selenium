@@ -31,7 +31,11 @@ public class HomePage extends Page<HomePage> {
 	private WebElement LittleAmericaBackpackQA;
 	@FindBy(css = "a[href='/shop/backpacks/little-america-backpack?v=10014-00001-OS']")
 	private WebElement LittleAmericaBackpackProd;
-
+	//Mobile Device Elements
+	@FindBy(css = "a[data-modal='mobile']")
+	private WebElement NavMenuMobile;
+	@FindBy(linkText = "MENS")
+	private WebElement NavMenuMen;
 	/**
 	 * Default constructor.
 	 * @param driver the WebDriver
@@ -210,5 +214,17 @@ public class HomePage extends Page<HomePage> {
 		}
 		//return false if the modal search result is not found
 		return false;
+	}
+
+	/**
+	 * Navigates to the Backpacks section using the navigation dropdown on a mobile device.
+	 */
+	public void navigateToBackpacksMobile() {
+		NavMenuMobile.click();
+		driver.findElements(By.cssSelector("li[class='header--sm header--has-caret text-white h1']")).get(0).click();
+		//wait.until(ExpectedConditions.elementToBeClickable(NavMenuMen));
+		//NavMenuMen.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Backpacks));
+		Backpacks.click();
 	}
 }

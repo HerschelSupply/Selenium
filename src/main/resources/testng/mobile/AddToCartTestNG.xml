@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="AddToCartTestSuite" verbose="1">
+<suite name="AddToCartTestSuite Mobile" verbose="1">
 
-  <test name="Add To Cart Test CA" preserve-order="true">
+  <test name="Add To Cart Test CA Mobile" preserve-order="true">
     <parameter name="country" value="CA"/>
     <parameter name="productName" value="Little America Backpack"/>
     <parameter name="skuName" value="Canteen Crosshatch"/>
@@ -11,18 +11,18 @@
         <methods>
           <include name="setCookie" />
           <include name="loadLittleAmericaBackpack" />
-          <include name="selectSKU" />
+          <include name="selectSKUMobile" />
           <include name="addToCart" />
           <include name="verifyToaster" />
           <include name="openDrawer" />
-          <!--include name="verifyDrawer" />
+          <include name="verifyDrawer" />
           <include name="clickDrawerCheckoutLink" />
-          <include name="verifyCart" /-->
+          <include name="verifyCart" />
         </methods>
       </class>
     </classes>
   </test>
-  <test name="Add To Cart Test US" preserve-order="true">
+  <!--test name="Add To Cart Test US" preserve-order="true">
     <parameter name="country" value="US"/>
     <parameter name="productName" value="Little America Backpack"/>
     <parameter name="skuName" value="Canteen Crosshatch"/>
@@ -36,9 +36,9 @@
           <include name="addToCart" />
           <include name="verifyToaster" />
           <include name="openDrawer" />
-          <!--include name="verifyDrawer" />
+          <include name="verifyDrawer" />
           <include name="clickDrawerCheckoutLink" />
-          <include name="verifyCart" /-->
+          <include name="verifyCart" />
         </methods>
       </class>
     </classes>
@@ -57,9 +57,9 @@
           <include name="addToCart" />
           <include name="verifyToaster" />
           <include name="openDrawer" />
-          <!--include name="verifyDrawer" />
+          <include name="verifyDrawer" />
           <include name="clickDrawerCheckoutLink" />
-          <include name="verifyCart" /-->
+          <include name="verifyCart" />
         </methods>
       </class>
     </classes>
@@ -78,11 +78,11 @@
           <include name="addToCart" />
           <include name="verifyToaster" />
           <include name="openDrawer" />
-          <!--include name="verifyDrawer" />
+          <include name="verifyDrawer" />
           <include name="clickDrawerCheckoutLink" />
-          <include name="verifyCart" /-->
+          <include name="verifyCart" />
         </methods>
       </class>
     </classes>
-  </test>
+  </test-->
 </suite>
