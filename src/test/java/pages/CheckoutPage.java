@@ -235,7 +235,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
         waitForLoadingOverlayToDisappear();
         if (driver.findElements(By.cssSelector("button[id='hsco-section4-next']")).size() > 0 ) {
             if (driver.findElements(By.cssSelector("button[id='hsco-section4-next']")).get(0).isDisplayed()) {
-                PaymentNext.click();
+                try {
+                    PaymentNext.click();
+                } catch (ElementNotVisibleException e) {
+                    System.out.print("Payment Next Button did not disappear immediately after click");
+                }
             }
         }
 		//Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
