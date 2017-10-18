@@ -253,6 +253,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
     public void placeOrder() {
     	//Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
         waitForLoadingOverlayToDisappear();
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
+        } catch (TimeoutException e) {
+            System.out.print("Place Order Button was not clickable for over 15 seconds");
+        }
         wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
 		PlaceOrder.click();
 		//If click failed (fairly common occurrence in checkout), attempt to click again
@@ -355,7 +360,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
         }
 		//Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
         waitForLoadingOverlayToDisappear();
-        wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
+        } catch (TimeoutException e) {
+            System.out.print("Place Order Button was not clickable for over 15 seconds");
+        }
     }
 
     /**
