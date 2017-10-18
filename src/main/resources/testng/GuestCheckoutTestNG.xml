@@ -75,7 +75,7 @@
       </class>
     </classes>
   </test>
-  <test name="Guest Checkout Test EU" preserve-order="true">
+  <!--test name="Guest Checkout Test EU" preserve-order="true">
     <parameter name="country" value="EU"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="givenName" value="Test"/>
@@ -148,5 +148,5 @@
         </methods>
       </class>
     </classes>
-  </test>
+  </test-->
 </suite>

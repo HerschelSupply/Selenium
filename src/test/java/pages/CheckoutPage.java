@@ -220,7 +220,13 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		//Need to wait for the loading overlay to disappear
         waitForLoadingOverlayToDisappear();
         wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
-		PaymentMethods.click();
+        waitForLoadingOverlayToDisappear();
+        wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
+        try {
+            PaymentMethods.click();
+        } catch (WebDriverException e) {
+            System.out.print("Payment Method Dropdown was reported to be unclickable");
+        }
         waitForLoadingOverlayToDisappear();
 		for (WebElement option : PaymentMethods.findElements(By.tagName("option"))) {
 			if (option.getText().equals("Visa ending in *4242")) {
@@ -258,8 +264,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
         } catch (TimeoutException e) {
             System.out.print("Place Order Button was not clickable for over 15 seconds");
         }
-        wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
-		PlaceOrder.click();
+        try {
+            PlaceOrder.click();
+        } catch (WebDriverException e) {
+            System.out.print("Place Order Button was reported to be unclickable");
+        }
 		//If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
         if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).size() > 0 ) {
