@@ -2,6 +2,7 @@ package base;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -56,7 +57,12 @@ public class WebDriverContainer {
             driver = getHeadlessWebDriver(htmlUnitCaps);
         } else if ("chrome".equals(driverType)) {
             driver = getChromeWebDriver();
-        } else if ("saucewindowschrome".equals(driverType)) {
+        } else if ("chromemobile".equals(driverType)) {
+            driver = getChromeWebDriver();
+            Dimension mobile = new Dimension(375,667);
+            driver.manage().window().setSize(mobile);
+        }
+        else if ("saucewindowschrome".equals(driverType)) {
             DesiredCapabilities caps = DesiredCapabilities.chrome();
             caps.setCapability("platform", "Windows 10");
             //caps.setCapability("version", " 61.0");
@@ -90,8 +96,8 @@ public class WebDriverContainer {
     private WebDriver getChromeWebDriver() {
     	String chromeDriverPath = pm.getProperty("chrome.driver.path");
     	System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-    	options.addArguments("--start-maximized"); 
-    	return new ChromeDriver(options);
+    	options.addArguments("--start-maximized");
+        return new ChromeDriver(options);
     }
 
     private WebDriver getHeadlessWebDriver(final DesiredCapabilities caps) {
