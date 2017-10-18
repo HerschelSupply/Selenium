@@ -180,7 +180,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
         waitForLoadingOverlayToDisappear();
 		if (driver.findElements(By.cssSelector("button[id='hsco-section2-next']")).size() > 0 ) {
 		    if (driver.findElements(By.cssSelector("button[id='hsco-section2-next']")).get(0).isDisplayed()) {
-                ShippingAddressNext.click();
+                try {
+                    ShippingAddressNext.click();
+                } catch (ElementNotVisibleException e) {
+                    System.out.print("Shipping Next Button did not disappear immediately after click");
+                }
             }
 		}
 		//Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
