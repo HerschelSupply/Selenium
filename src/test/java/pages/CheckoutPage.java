@@ -198,7 +198,15 @@ public class CheckoutPage extends Page<CheckoutPage> {
 	public void selectDefaultShippingMethod() {
 		//Need to wait for the loading overlay to disappear
         waitForLoadingOverlayToDisappear();
-		ShippingMethods.click();
+        wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
+        //Loading Overlay can appear twice.  Adding logic to prevent false failures
+        waitForLoadingOverlayToDisappear();
+        wait.until(ExpectedConditions.elementToBeClickable(ShippingMethodNext));
+        try {
+            ShippingMethods.click();
+        } catch (WebDriverException e) {
+            System.out.print("Shipping Method Dropdown was reported to be unclickable");
+        }
         waitForLoadingOverlayToDisappear();
 		for (WebElement option : ShippingMethods.findElements(By.tagName("option"))) {
 			if (option.getText().equals("Standard Shipping - FREE")) {
@@ -220,6 +228,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		//Need to wait for the loading overlay to disappear
         waitForLoadingOverlayToDisappear();
         wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
+        //Loading Overlay can appear twice.  Adding logic to prevent false failures
         waitForLoadingOverlayToDisappear();
         wait.until(ExpectedConditions.elementToBeClickable(PaymentNext));
         try {
