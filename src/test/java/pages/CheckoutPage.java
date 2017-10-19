@@ -278,7 +278,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         }
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
-        jse.executeScript("window.scrollBy(0,-250)", "");
+        jse.executeScript("window.scrollBy(0,-200)", "");
         try {
             PlaceOrder.click();
         } catch (WebDriverException e) {
@@ -386,7 +386,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         CardCVC.sendKeys(cvc);
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", AddPaymentButton);
-        jse.executeScript("window.scrollBy(0,-125)", "");
+        jse.executeScript("window.scrollBy(0,-200)", "");
         AddPaymentButton.click();
         //If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
@@ -536,7 +536,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         wait.until(ExpectedConditions.elementToBeClickable(AddDiscount));
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", AddDiscount);
-        jse.executeScript("window.scrollBy(0,-250)", "");
+        jse.executeScript("window.scrollBy(0,-200)", "");
         driver.findElement(By.linkText("Add a discount")).click();
         wait.until(ExpectedConditions.elementToBeClickable(CouponCode));
         CouponCode.sendKeys(couponCode);

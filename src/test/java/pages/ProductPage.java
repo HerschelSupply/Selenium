@@ -102,6 +102,13 @@ public class ProductPage extends Page<ProductPage> {
 		jse.executeScript("arguments[0].scrollIntoView()", AddToCart);
 		jse.executeScript("window.scrollBy(0,-250)", "");
 	    AddToCart.click();
+		if (driver.findElements(By.cssSelector("div.hsco-product-add")).size() == 0 ) {
+			try {
+				AddToCart.click();
+			} catch (WebDriverException e) {
+				System.out.print("Attempted to click Add to Cart for a second time");
+			}
+		}
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.hsco-product-add")));
 	}
 
