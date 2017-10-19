@@ -168,7 +168,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         wait.until(ExpectedConditions.elementToBeClickable(ShippingAddresses));
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", ShippingAddresses);
-        jse.executeScript("window.scrollBy(0,-250)", "");
+        jse.executeScript("window.scrollBy(0,-200)", "");
 		ShippingAddresses.click();
         waitForLoadingOverlayToDisappear();
 		for (WebElement option : ShippingAddresses.findElements(By.tagName("option"))) {
@@ -278,7 +278,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         }
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
-        jse.executeScript("window.scrollBy(0,-200)", "");
+        jse.executeScript("window.scrollBy(0,-250)", "");
         try {
             PlaceOrder.click();
         } catch (WebDriverException e) {
@@ -385,8 +385,8 @@ public class CheckoutPage extends Page<CheckoutPage> {
         CardExpYear.sendKeys(expYear);
         CardCVC.sendKeys(cvc);
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("arguments[0].scrollIntoView()", AddPaymentButton);
-        jse.executeScript("window.scrollBy(0,-200)", "");
+        //jse.executeScript("arguments[0].scrollIntoView()", AddPaymentButton);
+        jse.executeScript("window.scrollBy(0,200)", "");
         AddPaymentButton.click();
         //If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
