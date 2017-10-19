@@ -56,7 +56,7 @@
 			</activation>
 			<properties>
 				<suiteXmlFile>src/main/resources/mobiletestng.xml</suiteXmlFile>
-				<testEnv>prod</testEnv>
+				<testEnv>qa</testEnv>
 			</properties>
 		</profile>
     </profiles>
