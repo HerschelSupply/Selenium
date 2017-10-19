@@ -166,6 +166,9 @@ public class CheckoutPage extends Page<CheckoutPage> {
 		//Need to wait for the loading overlay to disappear
         waitForLoadingOverlayToDisappear();
         wait.until(ExpectedConditions.elementToBeClickable(ShippingAddresses));
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView()", ShippingAddresses);
+        jse.executeScript("window.scrollBy(0,-250)", "");
 		ShippingAddresses.click();
         waitForLoadingOverlayToDisappear();
 		for (WebElement option : ShippingAddresses.findElements(By.tagName("option"))) {
@@ -273,6 +276,9 @@ public class CheckoutPage extends Page<CheckoutPage> {
         } catch (TimeoutException e) {
             System.out.print("Place Order Button was not clickable for over 15 seconds");
         }
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
+        jse.executeScript("window.scrollBy(0,-250)", "");
         try {
             PlaceOrder.click();
         } catch (WebDriverException e) {
@@ -282,7 +288,13 @@ public class CheckoutPage extends Page<CheckoutPage> {
         waitForLoadingOverlayToDisappear();
         if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).size() > 0 ) {
             if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).get(0).isDisplayed()) {
-                PlaceOrder.click();
+                try {
+                    jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
+                    jse.executeScript("window.scrollBy(0,-250)", "");
+                    PlaceOrder.click();
+                } catch (WebDriverException e) {
+                    System.out.print("Place Order Button remained active after first click");
+                }
             }
         }
     }
@@ -372,6 +384,9 @@ public class CheckoutPage extends Page<CheckoutPage> {
         CardExpMonth.sendKeys(expMonth);
         CardExpYear.sendKeys(expYear);
         CardCVC.sendKeys(cvc);
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView()", AddPaymentButton);
+        jse.executeScript("window.scrollBy(0,-250)", "");
         AddPaymentButton.click();
         //If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
@@ -581,5 +596,4 @@ public class CheckoutPage extends Page<CheckoutPage> {
     public void  waitForLoadingOverlayToDisappear() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
     }
-
 }

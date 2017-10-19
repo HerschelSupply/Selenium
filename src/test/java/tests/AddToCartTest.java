@@ -143,5 +143,4 @@ public class AddToCartTest extends TestBase {
         Assert.assertEquals(actualSkuName, expectedSkuName, String.format(
                 "The actual SKU name displayed in the Cart did not match the expected.  Actual: '%s'. Expected: '%s'", actualSkuName, expectedSkuName));
     }
-
 }

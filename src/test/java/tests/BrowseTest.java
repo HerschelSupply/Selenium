@@ -115,17 +115,6 @@ public class BrowseTest extends TestBase {
     }
 
     /**
-     * Clicks on the specified sku option on a mobile device.
-     *
-     * @param skuName name of product to select
-     */
-    @Test
-    @Parameters("skuName")
-    public void selectSKUMobile(String skuName) {
-        productPage.selectSKUMobile(skuName);
-    }
-
-    /**
      * Verifies the product name on the product page on a mobile device.
      *
      * @param expectedProductName verify this productName appears on the product page

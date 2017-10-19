@@ -222,8 +222,6 @@ public class HomePage extends Page<HomePage> {
 	public void navigateToBackpacksMobile() {
 		NavMenuMobile.click();
 		driver.findElements(By.cssSelector("li[class='header--sm header--has-caret text-white h1']")).get(0).click();
-		//wait.until(ExpectedConditions.elementToBeClickable(NavMenuMen));
-		//NavMenuMen.click();
 		wait.until(ExpectedConditions.elementToBeClickable(Backpacks));
 		Backpacks.click();
 	}

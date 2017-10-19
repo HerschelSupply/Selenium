@@ -11,7 +11,7 @@
           <include name="setCookie" />
           <include name="navigateToBackpacksMobile" />
           <include name="selectProductTile" />
-          <include name="selectSKUMobile" />
+          <include name="selectSKU" />
           <include name="verifyProductNameMobile" />
           <include name="verifySkuColorMobile" />
         </methods>
@@ -28,7 +28,7 @@
           <include name="setCookie" />
           <include name="navigateToBackpacksMobile" />
           <include name="selectProductTile" />
-          <include name="selectSKUMobile" />
+          <include name="selectSKU" />
           <include name="verifyProductNameMobile" />
           <include name="verifySkuColorMobile" />
         </methods>
@@ -45,7 +45,7 @@
           <include name="setCookie" />
           <include name="navigateToBackpacksMobile" />
           <include name="selectProductTile" />
-          <include name="selectSKUMobile" />
+          <include name="selectSKU" />
           <include name="verifyProductNameMobile" />
           <include name="verifySkuColorMobile" />
         </methods>
@@ -62,7 +62,7 @@
           <include name="setCookie" />
           <include name="navigateToBackpacksMobile" />
           <include name="selectProductTile" />
-          <include name="selectSKUMobile" />
+          <include name="selectSKU" />
           <include name="verifyProductNameMobile" />
           <include name="verifySkuColorMobile" />
         </methods>
