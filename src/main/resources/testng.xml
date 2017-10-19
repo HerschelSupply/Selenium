@@ -4,8 +4,8 @@
   <suite-files>
     <suite-file path="testng/GuestCheckoutTestNG.xml"/>
     <suite-file path="testng/RegisteredCheckoutTestNG.xml"/>
-    <suite-file path="testng/AddToCartTestNG.xml"/>
+    <!--suite-file path="testng/AddToCartTestNG.xml"/>
     <suite-file path="testng/BrowseTestNG.xml"/>
-    <suite-file path="testng/SearchTestNG.xml"/>
+    <suite-file path="testng/SearchTestNG.xml"/-->
   </suite-files>
 </suite>

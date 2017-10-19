@@ -344,7 +344,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
         waitForLoadingOverlayToDisappear();
         if (driver.findElements(By.cssSelector("button[id='hsco-add-address']")).size() > 0 ) {
             if (driver.findElements(By.cssSelector("button[id='hsco-add-address']")).get(0).isDisplayed()) {
-                AddAddressButton.click();
+                try {
+                    AddAddressButton.click();
+                } catch (ElementNotVisibleException e) {
+                    System.out.print("Add Address Button remained active after first click");
+                }
             }
         }
         //Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
@@ -373,7 +377,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
         waitForLoadingOverlayToDisappear();
         if (driver.findElements(By.cssSelector("button[id='hsco-add-payment']")).size() > 0 ) {
             if (driver.findElements(By.cssSelector("button[id='hsco-add-payment']")).get(0).isDisplayed()) {
-                AddPaymentButton.click();
+                try {
+                    AddPaymentButton.click();
+                } catch (ElementNotVisibleException e) {
+                    System.out.print("Add Payment Button remained active after first click");
+                }
             }
         }
 		//Need to wait for the loading overlay to disappear and the Shipping Method Next button to be clickable before proceeding
