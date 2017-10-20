@@ -91,6 +91,15 @@ public class SearchTest extends TestBase {
     }
 
     /**
+     * Submits the search request on a mobile device.
+     *
+     */
+    @Test
+    public void performSearchMobile() {
+        homePage.performSearchMobile();
+    }
+
+    /**
      * Verifies that the specified product is displayed in the Modal Search Results.
      *
      * @param productTitle used to check if this product is displayed in the Modal Search Results

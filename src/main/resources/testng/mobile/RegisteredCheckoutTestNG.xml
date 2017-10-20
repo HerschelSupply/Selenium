@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="RegisteredCheckoutTestSuite" verbose="1">
+<suite name="RegisteredCheckoutTestSuiteMobile" verbose="1">
 
   <test name="Registered Checkout Test CA Mobile" preserve-order="true">
     <parameter name="country" value="CA"/>

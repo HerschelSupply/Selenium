@@ -38,6 +38,8 @@ public class HomePage extends Page<HomePage> {
 	private WebElement NavMenuMen;
 	@FindBy (css = "div.close-cookie")
 	private WebElement CloseCookie;
+	@FindBy(css = "i.bt-arrow-right")
+	private WebElement ViewMoreResults;
 
 	/**
 	 * Default constructor.
@@ -243,5 +245,13 @@ public class HomePage extends Page<HomePage> {
 		} else {
 			System.out.print("Mobile Cookie Bar was not present");
 		}
+	}
+
+	/**
+	 * Performs a Search Request on a mobile device.
+	 */
+	public void performSearchMobile() {
+		wait.until(ExpectedConditions.elementToBeClickable(ViewMoreResults));
+		ViewMoreResults.click();
 	}
 }

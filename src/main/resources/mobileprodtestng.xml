@@ -5,7 +5,5 @@
     <suite-file path="testng/mobile/BrowseTestNG.xml"/>
     <suite-file path="testng/mobile/SearchTestNG.xml"/>
     <suite-file path="testng/AddToCartTestNG.xml"/>
-    <suite-file path="testng/mobile/GuestCheckoutTestNG.xml"/>
-    <suite-file path="testng/mobile/RegisteredCheckoutTestNG.xml"/>
   </suite-files>
 </suite>

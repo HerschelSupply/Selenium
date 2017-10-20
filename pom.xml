@@ -59,6 +59,19 @@
 				<testEnv>qa</testEnv>
 			</properties>
 		</profile>
+		<profile>
+			<id>mobileprod</id>
+			<activation>
+				<property>
+					<name>type</name>
+					<value>mobile</value>
+				</property>
+			</activation>
+			<properties>
+				<suiteXmlFile>src/main/resources/mobiletestng.xml</suiteXmlFile>
+				<testEnv>prod</testEnv>
+			</properties>
+		</profile>
     </profiles>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
