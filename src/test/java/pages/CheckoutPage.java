@@ -389,7 +389,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", Review);
         jse.executeScript("window.scrollBy(0,-250)", "");
-        AddPaymentButton.click();
+        try {
+            AddPaymentButton.click();
+        } catch (WebDriverException e) {
+            System.out.print("Add Payment Button was reported to be unclickable");
+        }
         //If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
         if (driver.findElements(By.cssSelector("button[id='hsco-add-payment']")).size() > 0 ) {
