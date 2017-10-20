@@ -59,7 +59,10 @@ public class WebDriverContainer {
             driver = getChromeWebDriver();
         } else if ("chromemobile".equals(driverType)) {
             driver = getChromeWebDriver();
-            Dimension mobile = new Dimension(375,667);
+            //iPhone 7 dimensions
+            //Dimension mobile = new Dimension(375,667);
+            //iPhone 7 Plus Dimensions
+            Dimension mobile = new Dimension(414,736);
             driver.manage().window().setSize(mobile);
         }
         else if ("saucewindowschrome".equals(driverType)) {
