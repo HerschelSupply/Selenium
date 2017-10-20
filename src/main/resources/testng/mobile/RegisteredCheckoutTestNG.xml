@@ -52,7 +52,7 @@
       </class>
     </classes>
   </test>
-  <!--test name="Registered Checkout Test EU Mobile" preserve-order="true">
+  <test name="Registered Checkout Test EU Mobile" preserve-order="true">
     <parameter name="country" value="EU"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
@@ -101,5 +101,5 @@
         </methods>
       </class>
     </classes>
-  </test-->
+  </test>
 </suite>
