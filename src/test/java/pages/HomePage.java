@@ -233,12 +233,15 @@ public class HomePage extends Page<HomePage> {
 	 * Closes the Cookie Bar on a mobile device.
 	 */
 	public void closeCookieBar() {
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
 		if(driver.findElements(By.cssSelector("div.close-cookie")).size() > 0) {
 			try {
 				CloseCookie.click();
 			} catch (WebDriverException e) {
 				System.out.print("Closing Cookie Bar failed");
 			}
+		} else {
+			System.out.print("Mobile Cookie Bar was not present");
 		}
 	}
 }

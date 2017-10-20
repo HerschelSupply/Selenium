@@ -1,0 +1,105 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="RegisteredCheckoutTestSuite" verbose="1">
+
+  <test name="Registered Checkout Test CA" preserve-order="true">
+    <parameter name="country" value="CA"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.RegisteredCheckoutTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="closeCookieBar" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <include name="placeOrder" />
+          <include name="verifyOrderConfirmationMessage" />
+          <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Registered Checkout Test US" preserve-order="true">
+    <parameter name="country" value="US"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.RegisteredCheckoutTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="closeCookieBar" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <include name="validateTax" />
+          <include name="placeOrder" />
+            <include name="verifyOrderConfirmationMessage" />
+            <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Registered Checkout Test EU" preserve-order="true">
+    <parameter name="country" value="EU"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.RegisteredCheckoutTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="closeCookieBar" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <include name="placeOrder" />
+            <include name="verifyOrderConfirmationMessage" />
+            <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Registered Checkout Test UK" preserve-order="true">
+    <parameter name="country" value="UK"/>
+    <parameter name="email" value="test.automation@herschel.com"/>
+    <parameter name="password" value="password"/>
+    <parameter name="confirmationTitle" value="THANK YOU!"/>
+    <parameter name="confirmationMessage" value="Your order has been successfully processed and you should receive a confirmation email with your order information."/>
+    <classes>
+      <class name="tests.RegisteredCheckoutTest">
+        <methods>
+          <include name="setCookie" />
+          <include name="loadLittleAmericaBackpack" />
+          <include name="addToCart" />
+          <include name="goToCheckout" />
+          <include name="signInAtCheckout" />
+          <include name="closeCookieBar" />
+          <include name="selectDefaultShippingAddress" />
+          <include name="selectDefaultShippingMethod" />
+          <include name="selectDefaultPaymentMethod" />
+          <include name="placeOrder" />
+            <include name="verifyOrderConfirmationMessage" />
+            <include name="verifyOrderConfirmationTitle" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>

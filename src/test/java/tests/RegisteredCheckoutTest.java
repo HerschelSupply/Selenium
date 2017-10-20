@@ -177,4 +177,12 @@ public class RegisteredCheckoutTest extends TestBase {
         Assert.assertEquals(actualConfirmationMessage, expectedConfirmationMessage, String.format(
                 "The actual Order Confirmation Message did not match the expected.  Actual: '%s'. Expected: '%s'", actualConfirmationMessage, expectedConfirmationMessage));
     }
+
+    /**
+     * Closes the Cookie Bar on a mobile device.
+     */
+    @Test
+    public void closeCookieBar() {
+        homePage.closeCookieBar();
+    }
 }
