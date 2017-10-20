@@ -36,6 +36,9 @@ public class HomePage extends Page<HomePage> {
 	private WebElement NavMenuMobile;
 	@FindBy(linkText = "MENS")
 	private WebElement NavMenuMen;
+	@FindBy (css = "div.close-cookie")
+	private WebElement CloseCookie;
+
 	/**
 	 * Default constructor.
 	 * @param driver the WebDriver
@@ -224,5 +227,18 @@ public class HomePage extends Page<HomePage> {
 		driver.findElements(By.cssSelector("li[class='header--sm header--has-caret text-white h1']")).get(0).click();
 		wait.until(ExpectedConditions.elementToBeClickable(Backpacks));
 		Backpacks.click();
+	}
+
+	/**
+	 * Closes the Cookie Bar on a mobile device.
+	 */
+	public void closeCookieBar() {
+		if(driver.findElements(By.cssSelector("div.close-cookie")).size() > 0) {
+			try {
+				CloseCookie.click();
+			} catch (WebDriverException e) {
+				System.out.print("Closing Cookie Bar failed");
+			}
+		}
 	}
 }

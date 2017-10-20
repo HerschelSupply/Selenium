@@ -279,8 +279,8 @@ public class CheckoutPage extends Page<CheckoutPage> {
             System.out.print("Place Order Button was not clickable for over 15 seconds");
         }
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        //jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
-        jse.executeScript("window.scrollBy(0,500)", "");
+        jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
+        jse.executeScript("window.scrollBy(0,-250)", "");
         try {
             PlaceOrder.click();
         } catch (WebDriverException e) {
