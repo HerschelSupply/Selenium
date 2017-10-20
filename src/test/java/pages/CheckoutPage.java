@@ -353,7 +353,11 @@ public class CheckoutPage extends Page<CheckoutPage> {
         //Scrolling down a little makes the button appear on screen and be clickable.
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", ShippingCity);
-        AddAddressButton.click();
+        try {
+            AddAddressButton.click();
+        } catch (WebDriverException e) {
+            System.out.print("Add Address Button was reported to be unclickable");
+        }
         //If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
         if (driver.findElements(By.cssSelector("button[id='hsco-add-address']")).size() > 0 ) {
