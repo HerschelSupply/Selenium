@@ -81,6 +81,8 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement AddPaymentButton;
     @FindBy(css = "input[id='newCard']")
     private WebElement EnterNewCard;
+    @FindBy(css = "h4[id='ui-id-5']")
+    private WebElement Review;
 
     //Cart WebElements
     @FindBy(css = "p[class='m-y-0 text-cta bfx-product-name']")
@@ -168,7 +170,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         wait.until(ExpectedConditions.elementToBeClickable(ShippingAddresses));
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", ShippingAddresses);
-        jse.executeScript("window.scrollBy(0,-200)", "");
+        jse.executeScript("window.scrollBy(0,-250)", "");
 		ShippingAddresses.click();
         waitForLoadingOverlayToDisappear();
 		for (WebElement option : ShippingAddresses.findElements(By.tagName("option"))) {
@@ -385,8 +387,8 @@ public class CheckoutPage extends Page<CheckoutPage> {
         CardExpYear.sendKeys(expYear);
         CardCVC.sendKeys(cvc);
         JavascriptExecutor jse = (JavascriptExecutor)driver;
-        //jse.executeScript("arguments[0].scrollIntoView()", AddPaymentButton);
-        jse.executeScript("window.scrollBy(0,200)", "");
+        jse.executeScript("arguments[0].scrollIntoView()", Review);
+        jse.executeScript("window.scrollBy(0,-250)", "");
         AddPaymentButton.click();
         //If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
@@ -536,7 +538,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         wait.until(ExpectedConditions.elementToBeClickable(AddDiscount));
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", AddDiscount);
-        jse.executeScript("window.scrollBy(0,-200)", "");
+        jse.executeScript("window.scrollBy(0,-250)", "");
         driver.findElement(By.linkText("Add a discount")).click();
         wait.until(ExpectedConditions.elementToBeClickable(CouponCode));
         CouponCode.sendKeys(couponCode);
