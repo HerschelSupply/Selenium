@@ -64,7 +64,7 @@
 			<activation>
 				<property>
 					<name>type</name>
-					<value>mobile</value>
+					<value>mobileprod</value>
 				</property>
 			</activation>
 			<properties>
