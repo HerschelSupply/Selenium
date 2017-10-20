@@ -380,6 +380,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
      * @param cvc value to enter in credit card field
      */
     public void addCreditCard(String cardName, String cardNumber, String expMonth, String expYear, String cvc) {
+        waitForLoadingOverlayToDisappear();
         wait.until(ExpectedConditions.elementToBeClickable(AddPaymentButton));
         CardName.sendKeys(cardName);
         CardNumber.sendKeys(cardNumber);
