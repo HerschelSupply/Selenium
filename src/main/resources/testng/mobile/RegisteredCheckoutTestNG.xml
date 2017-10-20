@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="RegisteredCheckoutTestSuite" verbose="1">
 
-  <test name="Registered Checkout Test CA" preserve-order="true">
+  <test name="Registered Checkout Test CA Mobile" preserve-order="true">
     <parameter name="country" value="CA"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
@@ -19,14 +19,14 @@
           <include name="selectDefaultShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="selectDefaultPaymentMethod" />
-          <include name="placeOrder" />
+          <include name="placeOrderMobile" />
           <include name="verifyOrderConfirmationMessage" />
           <include name="verifyOrderConfirmationTitle" />
         </methods>
       </class>
     </classes>
   </test>
-  <test name="Registered Checkout Test US" preserve-order="true">
+  <test name="Registered Checkout Test US Mobile" preserve-order="true">
     <parameter name="country" value="US"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
@@ -45,14 +45,14 @@
           <include name="selectDefaultShippingMethod" />
           <include name="selectDefaultPaymentMethod" />
           <include name="validateTax" />
-          <include name="placeOrder" />
+          <include name="placeOrderMobile" />
             <include name="verifyOrderConfirmationMessage" />
             <include name="verifyOrderConfirmationTitle" />
         </methods>
       </class>
     </classes>
   </test>
-  <test name="Registered Checkout Test EU" preserve-order="true">
+  <!--test name="Registered Checkout Test EU Mobile" preserve-order="true">
     <parameter name="country" value="EU"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
@@ -70,14 +70,14 @@
           <include name="selectDefaultShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="selectDefaultPaymentMethod" />
-          <include name="placeOrder" />
-            <include name="verifyOrderConfirmationMessage" />
-            <include name="verifyOrderConfirmationTitle" />
+          <include name="placeOrderMobile" />
+          <include name="verifyOrderConfirmationMessage" />
+          <include name="verifyOrderConfirmationTitle" />
         </methods>
       </class>
     </classes>
   </test>
-  <test name="Registered Checkout Test UK" preserve-order="true">
+  <test name="Registered Checkout Test UK Mobile" preserve-order="true">
     <parameter name="country" value="UK"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="password" value="password"/>
@@ -95,11 +95,11 @@
           <include name="selectDefaultShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="selectDefaultPaymentMethod" />
-          <include name="placeOrder" />
-            <include name="verifyOrderConfirmationMessage" />
-            <include name="verifyOrderConfirmationTitle" />
+          <include name="placeOrderMobile" />
+          <include name="verifyOrderConfirmationMessage" />
+          <include name="verifyOrderConfirmationTitle" />
         </methods>
       </class>
     </classes>
-  </test>
+  </test-->
 </suite>

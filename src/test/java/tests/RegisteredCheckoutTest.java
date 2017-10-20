@@ -185,4 +185,12 @@ public class RegisteredCheckoutTest extends TestBase {
     public void closeCookieBar() {
         homePage.closeCookieBar();
     }
+
+    /**
+     * Completes checkout by clicking on the Place Order button on a mobile device.
+     */
+    @Test
+    public void placeOrderMobile() {
+        checkoutPage.placeOrderMobile();
+    }
 }

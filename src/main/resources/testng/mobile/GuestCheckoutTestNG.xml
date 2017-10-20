@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="GuestCheckoutTestSuite" verbose="1">
 
-  <test name="Guest Checkout Test CA" preserve-order="true">
+  <test name="Guest Checkout Test CA Mobile" preserve-order="true">
   <parameter name="country" value="CA"/>
   <parameter name="email" value="test.automation@herschel.com"/>
   <parameter name="givenName" value="Test"/>
@@ -32,14 +32,14 @@
         <include name="addShippingAddress" />
         <include name="selectDefaultShippingMethod" />
         <include name="addCreditCard" />
-        <include name="placeOrder" />
+        <include name="placeOrderMobile" />
         <include name="verifyOrderConfirmationMessage" />
         <include name="verifyOrderConfirmationTitle" />
       </methods>
     </class>
   </classes>
   </test>
-  <test name="Guest Checkout Test US" preserve-order="true">
+  <test name="Guest Checkout Test US Mobile" preserve-order="true">
     <parameter name="country" value="US"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="givenName" value="Test"/>
@@ -70,14 +70,14 @@
           <include name="addShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="addCreditCard" />
-          <include name="placeOrder" />
+          <include name="placeOrderMobile" />
           <include name="verifyOrderConfirmationMessage" />
           <include name="verifyOrderConfirmationTitle" />
         </methods>
       </class>
     </classes>
   </test>
-  <test name="Guest Checkout Test EU" preserve-order="true">
+  <!--test name="Guest Checkout Test EU Mobile" preserve-order="true">
     <parameter name="country" value="EU"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="givenName" value="Test"/>
@@ -108,14 +108,14 @@
           <include name="addShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="addCreditCard" />
-          <include name="placeOrder" />
+          <include name="placeOrderMobile" />
           <include name="verifyOrderConfirmationMessage" />
           <include name="verifyOrderConfirmationTitle" />
         </methods>
       </class>
     </classes>
   </test>
-  <test name="Guest Checkout Test UK" preserve-order="true">
+  <test name="Guest Checkout Test UK Mobile" preserve-order="true">
     <parameter name="country" value="UK"/>
     <parameter name="email" value="test.automation@herschel.com"/>
     <parameter name="givenName" value="Test"/>
@@ -146,11 +146,11 @@
           <include name="addShippingAddress" />
           <include name="selectDefaultShippingMethod" />
           <include name="addCreditCard" />
-          <include name="placeOrder" />
+          <include name="placeOrderMobile" />
           <include name="verifyOrderConfirmationMessage" />
           <include name="verifyOrderConfirmationTitle" />
         </methods>
       </class>
     </classes>
-  </test>
+  </test-->
 </suite>

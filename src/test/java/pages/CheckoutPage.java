@@ -280,9 +280,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
         }
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
-        jse.executeScript("window.scrollBy(0,-250)", "");
-        //jse.executeScript("arguments[0].scrollIntoView()", PurchaseForm);
-        //jse.executeScript("window.scrollBy(0,-250)", "");
+        jse.executeScript("window.scrollBy(0,-250)", "");;
         try {
             PlaceOrder.click();
         } catch (WebDriverException e) {
@@ -290,19 +288,17 @@ public class CheckoutPage extends Page<CheckoutPage> {
         }
 		//If click failed (fairly common occurrence in checkout), attempt to click again
         waitForLoadingOverlayToDisappear();
-        //if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).size() > 0 ) {
-            //if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).get(0).isDisplayed()) {
+        if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).size() > 0 ) {
+            if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).get(0).isDisplayed()) {
                 try {
                     jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
                     jse.executeScript("window.scrollBy(0,-250)", "");
-                    //jse.executeScript("arguments[0].scrollIntoView()", PurchaseForm);
-                    //jse.executeScript("window.scrollBy(0,-250)", "");
                     PlaceOrder.click();
                 } catch (WebDriverException e) {
                     System.out.print("Attempted to click Place Order Button for a second time, but click failed");
                 }
-            //}
-        //}
+            }
+        }
     }
 
     /**
@@ -604,5 +600,45 @@ public class CheckoutPage extends Page<CheckoutPage> {
      */
     public void  waitForLoadingOverlayToDisappear() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
+    }
+
+    /**
+     * Completes checkout by clicking on the Place Order button on a mobile device.
+     */
+    public void placeOrderMobile() {
+        //Need to wait for the loading overlay to disappear and the Place Order button to be clickable before proceeding
+        waitForLoadingOverlayToDisappear();
+        //On mobile devices the browser will focus on the Order Review section, but the focus takes a second to occur
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
+        jse.executeScript("window.scrollBy(0,-250)", "");
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(PlaceOrder));
+        } catch (TimeoutException e) {
+            System.out.print("Place Order Button was not clickable for over 15 seconds");
+        }
+        try {
+            PlaceOrder.click();
+        } catch (WebDriverException e) {
+            System.out.print("Place Order Button was reported to be unclickable");
+        }
+        //If click failed (fairly common occurrence in the automated checkout), attempt to click again
+        waitForLoadingOverlayToDisappear();
+        if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).size() > 0 ) {
+            if (driver.findElements(By.cssSelector("button[id='hsco-section5-next']")).get(0).isDisplayed()) {
+                try {
+                    jse.executeScript("arguments[0].scrollIntoView()", PlaceOrder);
+                    jse.executeScript("window.scrollBy(0,-250)", "");
+                    PlaceOrder.click();
+                } catch (WebDriverException e) {
+                    System.out.print("Attempted to click Place Order Button for a second time, but click failed");
+                }
+            }
+        }
     }
 }
