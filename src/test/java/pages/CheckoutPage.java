@@ -99,7 +99,7 @@ public class CheckoutPage extends Page<CheckoutPage> {
     private WebElement AddDiscount;
     @FindBy(css = "input[name='hsco-coupon']")
     private WebElement CouponCode;
-    @FindBy(css = "button.button.hsco-apply-giftcard-button.discount__button")
+    @FindBy(css = "button.hsco-apply-coupon-button")
     private WebElement ApplyCoupon;
     @FindBy(css = "span.hsco-order-discount")
     private WebElement CouponApplied;
@@ -536,13 +536,23 @@ public class CheckoutPage extends Page<CheckoutPage> {
      */
     public void applyDiscount(String couponCode) {
         wait.until(ExpectedConditions.elementToBeClickable(AddDiscount));
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("arguments[0].scrollIntoView()", AddDiscount);
-        jse.executeScript("window.scrollBy(0,-250)", "");
         driver.findElement(By.linkText("Add a discount")).click();
         wait.until(ExpectedConditions.elementToBeClickable(CouponCode));
         CouponCode.sendKeys(couponCode);
-        ApplyCoupon.click();
+        try {
+            ApplyCoupon.click();
+        } catch (WebDriverException e) {
+            System.out.print("Apply Coupon Button was reported to be unclickable");
+        }
+        //If click failed (fairly common occurrence in checkout), attempt to click again
+        waitForLoadingOverlayToDisappear();
+        if (isDiscountApplied() == false) {
+            try {
+                ApplyCoupon.click();
+            } catch (WebDriverException e) {
+                System.out.print("Attempted to click Apply Coupon for a second time but failed");
+            }
+        }
         //Need to wait for the loading overlay to disappear and Discount to appear before proceeding
         waitForLoadingOverlayToDisappear();
         wait.until(ExpectedConditions.visibilityOf(CouponApplied));
@@ -558,7 +568,20 @@ public class CheckoutPage extends Page<CheckoutPage> {
         driver.findElement(By.linkText("Add a discount")).click();
         wait.until(ExpectedConditions.elementToBeClickable(CouponCode));
         CouponCode.sendKeys(couponCode);
-        ApplyCoupon.click();
+        try {
+            ApplyCoupon.click();
+        } catch (WebDriverException e) {
+            System.out.print("Apply Coupon Button was reported to be unclickable");
+        }
+        //If click failed (fairly common occurrence in checkout), attempt to click again
+        waitForLoadingOverlayToDisappear();
+        if (isDiscountApplied() == false) {
+            try {
+                ApplyCoupon.click();
+            } catch (WebDriverException e) {
+                System.out.print("Attempted to click Apply Coupon for a second time but failed");
+            }
+        }
         //Need to wait for the loading overlay to disappear and Discount to appear before proceeding
         waitForLoadingOverlayToDisappear();
     }

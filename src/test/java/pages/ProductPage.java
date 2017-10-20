@@ -85,6 +85,8 @@ public class ProductPage extends Page<ProductPage> {
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("arguments[0].scrollIntoView()", SkuSelection);
 		jse.executeScript("window.scrollBy(0,-250)", "");
+		//double loading overlay can occur
+		waitForLoadingOverlayToDisappear();
 		driver.findElement(By.cssSelector("input[data-color='"+skuName+"']")).findElement(By.xpath("../img")).click();
 		waitForLoadingOverlayToDisappear();
 		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.hsco-add-to-cart")));
@@ -101,7 +103,11 @@ public class ProductPage extends Page<ProductPage> {
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("arguments[0].scrollIntoView()", AddToCart);
 		jse.executeScript("window.scrollBy(0,-250)", "");
-	    AddToCart.click();
+		try {
+			AddToCart.click();
+		} catch(WebDriverException e) {
+			System.out.print("Add to Cart Button was unclickable");
+		}
 		if (driver.findElements(By.cssSelector("div.hsco-product-add")).size() == 0 ) {
 			try {
 				AddToCart.click();
