@@ -68,7 +68,7 @@
 				</property>
 			</activation>
 			<properties>
-				<suiteXmlFile>src/main/resources/mobiletestng.xml</suiteXmlFile>
+				<suiteXmlFile>src/main/resources/mobileprodtestng.xml</suiteXmlFile>
 				<testEnv>prod</testEnv>
 			</properties>
 		</profile>
