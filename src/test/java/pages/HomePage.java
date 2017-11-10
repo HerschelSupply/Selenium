@@ -27,10 +27,8 @@ public class HomePage extends Page<HomePage> {
 	private WebElement SearchBox;
 	@FindBy(linkText = "Backpacks")
 	private WebElement Backpacks;
-	@FindBy(css = "a[href='/shop/backpacks/little-america-backpack?v=10014-00007-OS']")
-	private WebElement LittleAmericaBackpackQA;
-	@FindBy(css = "a[href='/shop/backpacks/little-america-backpack?v=10014-00001-OS']")
-	private WebElement LittleAmericaBackpackProd;
+	@FindBy(css = "a[data-href='/shop/backpacks/little-america-backpack']")
+	private WebElement LittleAmericaBackpack;
 	//Mobile Device Elements
 	@FindBy(css = "a[data-modal='mobile']")
 	private WebElement NavMenuMobile;
@@ -169,17 +167,9 @@ public class HomePage extends Page<HomePage> {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loadingoverlay")));
         JavascriptExecutor jse = (JavascriptExecutor)driver;
 		if (productName.equals("Little America Backpack")) {
-			if(driver.getCurrentUrl().startsWith("https://herschel")) {
-				//If testing in prod, look for the default SKU
-				jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpackProd);
-				jse.executeScript("window.scrollBy(0,-250)", "");
-				LittleAmericaBackpackProd.click();
-			} else {
-				//If testing in QA, look for the SKU that has unlimited quantity
-				jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpackQA);
-				jse.executeScript("window.scrollBy(0,-250)", "");
-				LittleAmericaBackpackQA.click();
-			}
+			jse.executeScript("arguments[0].scrollIntoView()", LittleAmericaBackpack);
+			jse.executeScript("window.scrollBy(0,-250)", "");
+			LittleAmericaBackpack.click();
 		}
 		else {
 			System.out.println("selectProduct method has not been configured for your specified product: " + productName);
